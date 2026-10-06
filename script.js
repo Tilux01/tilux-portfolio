@@ -19,14 +19,6 @@
     setInterval(tick, 30000);
   }
 
-  var nav = document.getElementById('nav');
-  var onScroll = function(){
-    if (!nav) return;
-    nav.classList.toggle('is-scrolled', window.scrollY > 8);
-  };
-  onScroll();
-  window.addEventListener('scroll', onScroll, { passive: true });
-
   var menuToggle = document.getElementById('menuToggle');
   var mobileNav = document.getElementById('mobileNav');
   var closeMenu = function(){
@@ -137,11 +129,9 @@
   });
 
   var spyLinks = document.querySelectorAll('.nav-links a[href^="#"]');
-  var pagerDots = document.querySelectorAll('.pager-dot[href^="#"]');
   var sections = document.querySelectorAll('main > section[id]');
   var setActive = function(id){
     spyLinks.forEach(function(a){ a.classList.toggle('is-current', a.getAttribute('href') === '#' + id); });
-    pagerDots.forEach(function(d){ d.classList.toggle('is-active', d.getAttribute('href') === '#' + id); });
   };
   if ('IntersectionObserver' in window && sections.length) {
     var spy = new IntersectionObserver(function(entries){
@@ -155,8 +145,9 @@
   var scrollTo = function(sel){
     var target = document.querySelector(sel);
     if (!target) return;
-    var y = target.getBoundingClientRect().top + window.scrollY - 104;
-    window.scrollTo({ top: y < 0 ? 0 : y, behavior: reduce ? 'auto' : 'smooth' });
+    var y = target.getBoundingClientRect().top + window.scrollY - 24;
+    if (y < 100) y = 0;
+    window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
   };
 
   document.querySelectorAll('a[href^="#"]').forEach(function(a){
@@ -173,6 +164,105 @@
   document.querySelectorAll('[data-scroll]').forEach(function(btn){
     btn.addEventListener('click', function(){ scrollTo(btn.getAttribute('data-scroll')); });
   });
+
+  var heroSlides = [
+    {
+      eyebrow: 'Designer & Developer',
+      label: 'What I do',
+      text: 'Interface design, front-end engineering and design systems, taken from a rough brief through to a shipped and tested product.',
+      a: 'Product Design',
+      b: 'Realtime & Motion'
+    },
+    {
+      eyebrow: 'Mobile & Realtime',
+      label: 'LoveCount',
+      text: 'A couples app built in Expo and React Native on a Firebase realtime backend. Live sync, chat and WebRTC calling, proven across two real devices.',
+      a: 'Expo + React Native',
+      b: 'Firebase + WebRTC'
+    },
+    {
+      eyebrow: 'Web & Commerce',
+      label: 'Tilux Automotive',
+      text: 'A boutique performance dealership. Full-bleed hero, curated inventory, a live carousel and a booking flow built to convert.',
+      a: 'Design System',
+      b: 'Booking Flow'
+    },
+    {
+      eyebrow: 'Brand & Retail',
+      label: 'Fresh & Reddy',
+      text: 'A pantry brand spread across seven pages, with a hand-built product carousel, swipe gestures and lead capture.',
+      a: 'Carousel Build',
+      b: 'Lead Capture'
+    },
+    {
+      eyebrow: 'Studio & Layout',
+      label: 'Isafast Venture',
+      text: 'A venture studio presence with editorial hierarchy, a structured service grid and clean responsive behaviour.',
+      a: 'Editorial Grid',
+      b: 'Responsive'
+    }
+  ];
+
+  var heroEyebrow = document.getElementById('heroEyebrow');
+  var heroLabel = document.getElementById('heroLabel');
+  var heroText = document.getElementById('heroText');
+  var heroCallA = document.getElementById('heroCallA');
+  var heroCallB = document.getElementById('heroCallB');
+  var pagerNow = document.getElementById('pagerNow');
+  var dots = Array.prototype.slice.call(document.querySelectorAll('.pager-dot[data-slide]'));
+
+  var setCallout = function(el, value){
+    if (!el) return;
+    var t = el.querySelector('.callout-text');
+    if (t) t.textContent = value;
+  };
+
+  var showSlide = function(i){
+    var s = heroSlides[i];
+    if (!s) return;
+    if (heroEyebrow) heroEyebrow.textContent = s.eyebrow;
+    if (heroLabel) heroLabel.textContent = s.label;
+    if (heroText) heroText.textContent = s.text;
+    setCallout(heroCallA, s.a);
+    setCallout(heroCallB, s.b);
+    if (pagerNow) pagerNow.textContent = (i + 1 < 10 ? '0' : '') + (i + 1);
+    dots.forEach(function(d, idx){
+      var on = idx === i;
+      d.classList.toggle('is-active', on);
+      if (on) d.setAttribute('aria-current', 'true');
+      else d.removeAttribute('aria-current');
+    });
+  };
+
+  if (dots.length) {
+    dots.forEach(function(d){
+      d.addEventListener('click', function(){
+        showSlide(parseInt(d.getAttribute('data-slide'), 10));
+      });
+    });
+
+    var dotsWrap = document.querySelector('.pager-dots');
+    var currentIndex = function(){
+      for (var i = 0; i < dots.length; i++) {
+        if (dots[i].classList.contains('is-active')) return i;
+      }
+      return 0;
+    };
+    if (dotsWrap) {
+      dotsWrap.addEventListener('keydown', function(e){
+        var active = currentIndex();
+        var next = null;
+        if (e.key === 'ArrowDown' || e.key === 'ArrowRight') next = (active + 1) % dots.length;
+        else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') next = (active - 1 + dots.length) % dots.length;
+        else if (e.key === 'Home') next = 0;
+        else if (e.key === 'End') next = dots.length - 1;
+        if (next === null) return;
+        e.preventDefault();
+        showSlide(next);
+        dots[next].focus();
+      });
+    }
+  }
 
   var form = document.getElementById('contactForm');
   var status = document.getElementById('formStatus');

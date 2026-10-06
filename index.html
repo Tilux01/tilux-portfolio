@@ -5,40 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tilux - Designer &amp; Developer</title>
 <meta name="description" content="Tilux is a designer and developer building clear, usable, conversion-focused digital products for web and mobile.">
-<meta name="theme-color" content="#F4F4F4">
+<meta name="theme-color" content="#F8F9FA">
 <meta property="og:title" content="Tilux - Designer &amp; Developer">
 <meta property="og:description" content="Clear, usable, conversion-focused digital products for web and mobile.">
 <meta property="og:type" content="website">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261007b">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20261008a">
 <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="navpill" id="nav">
-  <div class="navpill-inner">
+<header class="nav" id="nav">
+  <div class="nav-left">
     <a class="brand" href="#home" aria-label="Tilux, back to top">
       <span class="brand-badge" aria-hidden="true">T</span>
-      <span class="brand-name">Tilux</span>
     </a>
-
     <nav class="nav-links" aria-label="Primary">
       <a href="#home" class="is-current">Home</a>
       <a href="#work">Work</a>
       <a href="#services">Services</a>
-      <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
     </nav>
-
-    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
-      <span class="bar"></span><span class="bar"></span>
-    </button>
   </div>
+  <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+    <span class="bar"></span><span class="bar"></span>
+  </button>
 </header>
 
 <div class="mobile-nav" id="mobileNav" hidden>
@@ -49,44 +45,60 @@
   <a href="#contact">Contact</a>
 </div>
 
-<nav class="pager" id="pager" aria-label="Page sections">
-  <a class="pager-dot is-active" href="#home" data-label="Home"><span class="sr-only">Home</span></a>
-  <a class="pager-dot" href="#work" data-label="Work"><span class="sr-only">Work</span></a>
-  <a class="pager-dot" href="#services" data-label="Services"><span class="sr-only">Services</span></a>
-  <a class="pager-dot" href="#experience" data-label="Experience"><span class="sr-only">Experience</span></a>
-  <a class="pager-dot" href="#contact" data-label="Contact"><span class="sr-only">Contact</span></a>
-</nav>
-
 <main id="main">
 
 <section class="hero" id="home">
   <div class="hero-canvas">
-    <div class="hero-grid">
 
-      <div class="hero-copy">
-        <p class="caption hero-eyebrow reveal">Designer &amp; Developer</p>
-        <h1 class="display reveal" style="--d:1">Tilux</h1>
-        <div class="hero-meta reveal" style="--d:2">
-          <h3 class="meta-label">What I do</h3>
-          <p class="meta-text">Interface design, front-end engineering and design systems, taken from a rough brief all the way through to a shipped and tested product.</p>
+    <div class="hero-copy">
+      <div class="hero-eyebrow-row reveal">
+        <span class="dot" aria-hidden="true"></span>
+        <p class="hero-eyebrow" id="heroEyebrow">Designer &amp; Developer</p>
+      </div>
+
+      <h1 class="display hero-title reveal" style="--d:1">Tilux</h1>
+
+      <div class="hero-meta reveal" style="--d:2" aria-live="polite">
+        <h3 class="meta-label" id="heroLabel">What I do</h3>
+        <p class="meta-text" id="heroText">Interface design, front-end engineering and design systems, taken from a rough brief through to a shipped and tested product.</p>
+      </div>
+
+      <div class="hero-scroll reveal" style="--d:3">
+        <span class="mouse" aria-hidden="true"><span class="mouse-wheel"></span></span>
+        <span>Scroll</span>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal" style="--d:2">
+      <div class="hero-frame">
+        <img src="assets/portrait-mono.jpg" width="768" height="626" alt="Monochrome portrait of Tilux" fetchpriority="high">
+        <div class="callout-wrap callout-wrap-a">
+          <span class="callout" id="heroCallA">
+            <span class="dot" aria-hidden="true"></span>
+            <span class="callout-text">Product Design</span>
+          </span>
+        </div>
+        <div class="callout-wrap callout-wrap-b">
+          <span class="callout callout-sm" id="heroCallB">
+            <span class="dot" aria-hidden="true"></span>
+            <span class="callout-text">Realtime &amp; Motion</span>
+          </span>
         </div>
       </div>
-
-      <div class="hero-visual reveal" style="--d:2">
-        <figure class="portrait">
-          <img src="assets/portrait-mono.jpg" width="768" height="626" alt="Monochrome portrait of Tilux" fetchpriority="high">
-          <figcaption class="hud hud-a">
-            <span class="hud-dot" aria-hidden="true"></span>
-            Product Design
-          </figcaption>
-          <figcaption class="hud hud-b">
-            <span class="hud-dot" aria-hidden="true"></span>
-            Realtime &amp; Motion
-          </figcaption>
-        </figure>
-      </div>
-
     </div>
+
+    <div class="hero-pager reveal" style="--d:3" id="heroPager">
+      <span class="pager-num" id="pagerNow">01</span>
+      <div class="pager-dots" role="group" aria-label="Hero focus">
+        <button class="pager-dot is-active" type="button" data-slide="0" aria-label="Focus 1 of 5: Designer and Developer" aria-current="true"></button>
+        <button class="pager-dot" type="button" data-slide="1" aria-label="Focus 2 of 5: Mobile and Realtime"></button>
+        <button class="pager-dot" type="button" data-slide="2" aria-label="Focus 3 of 5: Web and Commerce"></button>
+        <button class="pager-dot" type="button" data-slide="3" aria-label="Focus 4 of 5: Brand and Retail"></button>
+        <button class="pager-dot" type="button" data-slide="4" aria-label="Focus 5 of 5: Studio and Layout"></button>
+      </div>
+      <span class="pager-num is-last">05</span>
+    </div>
+
   </div>
 </section>
 
@@ -394,6 +406,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=20261007b"></script>
+<script src="script.js?v=20261008a"></script>
 </body>
 </html>

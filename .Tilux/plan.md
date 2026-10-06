@@ -1,46 +1,41 @@
-# Build Plan - Tilux Portfolio v3
+# Build Plan - Tilux Portfolio v5
 
 ## Phase 1 - Recon
-1. Read the provided blueprint and map every token to a CSS custom property.
-2. Locate the live project and confirm the serving process and git remote.
-3. Extract and inspect existing assets; confirm image dimensions.
+1. Read the supplied blueprint and map every token to a CSS custom property.
+2. Locate the live project, confirm the serving process and the git remote.
+3. Inspect the existing nav and hero markup and the reveal, spy and form logic.
 
-## Phase 2 - Asset preparation
-4. Vision-analyse the source portrait against a #F4F4F4 canvas.
-5. Test three monochrome treatments, have the image model score them, keep the winner.
-6. Crop to remove the jacket detail and export assets/portrait-mono.jpg.
+## Phase 2 - Asset review
+4. Measure every asset. Portrait is 768x626, work covers are 1600 ratio except Isafast at 0.49.
+5. Confirm the portrait is greyscale under the treatment used by the hero frame.
 
-## Phase 3 - Foundation
-7. Write the token block exactly as specified, including radius, shadow and spacing scales.
-8. Write the type scale for 72/40/24/18/16/14/12.
-9. Build the reset, container and focus-visible ring.
+## Phase 3 - Tokens
+6. Rewrite the token block to v5 values, including the new radii, shadows and surfaces.
+7. Rebuild the type scale to 80/36/24/16/14/12/10.
+8. Re-point the container to 1280px and the gutter to clamp(16px, 4vw, 64px).
+9. Re-map chips, tags, captions and labels onto the new caption and pill specs.
 
-## Phase 4 - Hero
-10. Fixed floating navigation pill with logo badge, links and mobile toggle.
-11. Hero canvas card with the 12-column asymmetric grid.
-12. Left column: eyebrow, display name, border-top metadata block.
-13. Right column: portrait frame with two glass HUD cards on a staggered float loop.
-14. Fixed vertical dot-pagination with scroll spy, tooltips and jump-to-section.
+## Phase 4 - Navigation header
+10. Replace the floating nav pill with a bare 1200px, 72px header, no border and no shadow.
+11. Badge only as the brand mark, 40px black pill, 32px gap to a four link row.
+12. Retain a mobile toggle plus card panel below 768px.
 
-## Phase 5 - Sections
-15. Selected work grid with filter chips, skeleton shimmer covers and hover lift.
-16. Services with a sticky intro and a five-item accordion.
-17. Experience timeline.
-18. Contact card with the full input and button state matrix.
-19. Footer with brand, three link columns and a live clock.
+## Phase 5 - Hero
+13. Hero becomes a contained 1200px card: 32px radius, 1px #EAEAEA, shadow 0 20px 40px rgba(0,0,0,0.03),
+    min-height calc(100vh - 100px), padding 32px 48px.
+14. Twelve column grid with spans 5 / 6 / 1 at 1024px and up, single column below.
+15. Left column: dot plus eyebrow, display title, divided meta block, mouse scroll cue.
+16. Centre column: 420x480 frame, grayscale image, two glass callouts carrying the float animation.
+17. Right column: numbered pagination with five dot buttons.
 
 ## Phase 6 - Behaviour
-20. Reveal on scroll with IntersectionObserver and animation cleanup.
-21. Scroll spy driving both the nav and the pager dots.
-22. Accordion, filters, mobile menu, smooth scroll and form validation.
+18. Wire the pagination as a real five slide showreel covering the eyebrow, meta and both callouts.
+19. Add arrow key, Home and End support plus aria-current and an aria-live meta region.
+20. Hide the pagination when JavaScript is unavailable so no dead control ships.
+21. Retire the old sticky nav scroll state and the old fixed side pager.
 
 ## Phase 7 - Verification
-23. HTTP check on every asset.
-24. Computed-style assertions for every token and type level.
-25. Contrast audit across every live text node.
-26. Overflow check at 1440, 768 and 390.
-27. Interaction tests for accordion, filters, pager, form and the state matrix.
-28. Fix everything the audit surfaces and re-run.
-
-## Phase 8 - Ship
-29. Stage, commit and push to the existing remote.
+22. Assert every computed style against the brief at 1920, 1440, 1366, 1024, 900, 768 and 390.
+23. Run a contrast audit over every live text node.
+24. Regression test the accordion, filters, scroll spy, anchor scrolling and form validation.
+25. Capture screenshots and pixel probe the canvas, card border, corner radius and frame greyscale.

@@ -1,130 +1,139 @@
-# Design Specification - Tilux Portfolio v3
-Editorial Minimalist / Dark-on-Light Showreel
+# Design Specification - Tilux Portfolio v5
+Editorial Minimalist: Dark Mode Editorial / Cinematic Portfolio Hero
 
-Source of truth. Every value in the CSS traces back to a line below.
+Source of truth. Every value in styles.css traces back to a line below.
 
 ## 1. Philosophy and Aesthetic
-- Mood: editorial minimalist, modern portfolio showreel, high-contrast typography.
-- Whitespace: high ratio. Asymmetric hero balances a large character portrait against sparse left-aligned typography.
-- Elevation: flat ultra-clean canvas plus floating glass micro-cards for contextual stat callouts.
-- Theme: light studio only. Dark-on-light means dark elements on a light canvas. There is no dark theme in this brief.
+- Mood: editorial minimalist, cinematic portfolio, dramatic contrast between pure white surfaces and deep blacks.
+- Whitespace: highly spacious. Generous margins, asymmetric balance, sparse typography.
+- Elevation: flat white canvas plus absolute-positioned glassmorphic callout cards over a monochrome portrait.
+- Theme: light studio only. No dark theme defined in this brief.
 
 ## 2. Color Tokens
 | Token | Value | Usage |
 |---|---|---|
-| --color-primary | #111111 | Buttons, brand badge |
-| --color-primary-hover | #222222 | Button hover |
-| --color-primary-active | #000000 | Button active |
-| --color-accent | #000000 | Accent text, link hover |
+| --color-primary | #0A0A0A | Brand badge, titles, active dot, focus ring |
+| --color-primary-hover | #171717 | Badge hover |
+| --color-primary-active | #000000 | Badge active |
+| --color-primary-subdued | #737373 | Reserved |
+| --color-accent | #0A0A0A | Accent text |
 | --color-success | #10B981 | Valid field border |
-| --color-warning | #F59E0B | Reserved, no warning UI in build |
+| --color-warning | #F59E0B | Reserved |
 | --color-danger | #EF4444 | Error field border |
-| --color-bg-app | #F4F4F4 | Page canvas, hero canvas |
-| --color-surface-1 | #FFFFFF | Cards, nav pill |
-| --color-surface-2 | rgba(255,255,255,0.85) | Floating HUD glass |
-| --color-surface-3 | #FFFFFF | Floating pills, chips, tags |
-| --color-border-base | #E2E8F0 | Default borders and dividers |
-| --color-border-muted | #CBD5E1 | Scrolled nav border |
-| --color-border-hover | #94A3B8 | Input hover border |
-| --color-border-active | #0F172A | Focus borders, HUD status dot, active pager dot |
-| --backdrop-blur | blur(16px) | HUD card glass |
-| --color-text-primary | #0F172A | Headings, body-strong |
-| --color-text-muted | #64748B | Muted text on white surfaces |
-| --color-text-muted-on-app | #5D6879 | Derived. Muted text on the #F4F4F4 canvas (see note) |
-| --color-text-disabled | #CBD5E1 | Reserved, disabled text |
-| --color-text-inverse | #FFFFFF | Text on primary button |
-| --color-text-accent | #000000 | Link hover |
+| --color-bg-app | #F8F9FA | Page canvas |
+| --color-surface-1 | #FFFFFF | Hero card, nav badge, cards |
+| --color-surface-2 | #FFFFFF | Floating pills |
+| --color-surface-3 | #F1F5F9 | Hero image area (frame gradient base) |
+| --color-surface-glass | rgba(255,255,255,0.9) | Callout glass |
+| --color-border-base | #E2E8F0 | Default borders, pill borders |
+| --color-border-muted | #F1F5F9 | Hero meta divider |
+| --color-border-hero | #EAEAEA | Hero card border (exact) |
+| --color-border-hover | #94A3B8 | Input hover |
+| --color-border-active | #0A0A0A | Focus borders |
+| --color-dot | #0F172A | Status dots (glyph safety mapping) |
+| --backdrop-blur | blur(12px) | Callout glass |
+| --color-text-primary | #0A0A0A | Body and headings |
+| --color-text-muted | #64748B | Secondary text |
+| --color-text-muted-on-app | #5D6879 | Derived: muted on the #F8F9FA canvas (5.33:1) |
+| --color-text-disabled | #CBD5E1 | Inactive dots, mouse outline |
+| --color-text-inverse | #FFFFFF | Text on dark |
+| --color-text-badge | #1E293B | Callout label text |
+| --shadow-glow | 0 0 20px rgba(0,0,0,0.05) | Glow |
+| --shadow-card | 0 10px 30px rgba(0,0,0,0.04) | Card hover, contact card |
+| --shadow-hero | 0 20px 40px rgba(0,0,0,0.03) | Hero card |
+| --shadow-callout | 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -4px rgba(0,0,0,.1) | Callout (Tailwind shadow-lg) |
+| --shadow-inset | inset 0 2px 4px 0 rgba(0,0,0,0.05) | Hero frame (Tailwind shadow-inner) |
 
-### Contrast note
-The brief's audit table claims muted #64748B on #F4F4F4 = 5.1:1. Measured it is 4.33:1, which fails WCAG AA (4.5:1). #64748B on #FFFFFF measures 4.76:1 and passes. The base token is kept exactly as specified, and a derived --color-text-muted-on-app (#5D6879, 5.13:1 on #F4F4F4, 5.64:1 on #FFFFFF) is used only where muted text sits directly on the app canvas. Result: 0 contrast failures across 122 live text nodes.
+## 3. Radii
+| Token | Value | Usage |
+|---|---|---|
+| --radius-pill | 9999px | Badge, chips, tags, dots |
+| --radius-hero | 32px | Hero card |
+| --radius-card | 24px | Cards |
+| --radius-frame | 16px | Hero portrait frame |
+| --radius-callout | 12px | Floating callout cards |
+| --radius-input | 12px | Text inputs |
 
-## 3. Typography
-Family: 'Plus Jakarta Sans', weights 400 500 600 700 800.
+## 4. Typography
+Plus Jakarta Sans, ital wght 0,300..800 + 1,300..800. Mono: Courier New.
 
 | Level | Size | Weight | Line height | Tracking | Transform |
 |---|---|---|---|---|---|
-| Display 1 | 72px (60px under 640px) | 800 | 1.05 | -0.03em | none |
-| Heading 1 | 40px | 700 | 1.15 | -0.02em | none |
-| Heading 2 | 24px | 600 | 1.3 | 0 | none |
-| Heading 3 | 18px | 600 | 1.4 | 0 | none |
-| Body Large | 16px | 400 | 1.5 | 0 | none |
-| Body Regular | 14px | 400 | 1.5 | 0 | none |
-| Caption | 12px | 600 | 1.4 | 0.08em | uppercase |
+| Display 1 | 80px (clamp 48-80) | 800 | 1.05 | -0.03em | none |
+| Heading 1 | 36px | 700 | 1.2 | -0.02em | none |
+| Heading 2 | 24px | 600 | 1.3 | -0.01em | none |
+| Heading 3 | 16px | 600 | 1.4 | 0 | none |
+| Body Large | 14px | 400 | 1.5 | 0 | none |
+| Body Regular | 12px | 400 | 1.5 | 0 | none |
+| Caption | 10px | 600 | 1.4 | 0.08em | uppercase |
+| Hero eyebrow | 10px | 600 | 1.4 | 0.10em | uppercase |
+| Hero meta label | 12px | 600 | 1.4 | 0.05em | uppercase |
 
-## 4. Spatial Grid
-8pt scale: 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64.
-Container: 1280px max including 64px desktop gutters, giving a 1152px content rail (max-w-6xl).
-Breakpoints: 640 / 768 / 980 / 1024.
-Section sequence: floating navigation pill, asymmetric hero canvas, selected work, services, experience, contact, footer.
+Display uses clamp(3rem,12vw,5rem) so it resolves to exactly 80px at every desktop width and 48px on phones.
 
-## 5. Hero Canvas (asymmetric)
-- Hero canvas: 1152px max width, 24px radius, 1px #E2E8F0 border, shadow 0 8px 30px rgba(0,0,0,0.08), 48px padding.
-- Grid: 12 columns at 1024px and up. Left copy spans 5, right visual spans 7.
-- Left column: caption eyebrow, Display 1 name, then a border-top metadata block (uppercase 14px/600 label plus 14px muted paragraph).
-- Right column: character centrepiece, 448x450 max, 16px radius, 1px rgba(255,255,255,0.5) border, card shadow, object-fit cover.
-- Floating HUD cards: absolute, right 24px, top 32px and bottom 48px. Padding 8px 16px, 12px radius, rgba(255,255,255,0.85) glass with blur(16px), 1px #E2E8F0 border, 8px status dot #0F172A, floatHUD 5s loop with a 1.5s stagger on the second card.
-- Scroll pagination: fixed right edge, vertically centred, 5 dots, 12px gap. Inactive 10px circle rgba(15,23,42,0.2), active 26px tall pill #0F172A, label tooltip on hover and focus.
+## 5. Spatial Scale
+space-1 4, space-2 8, space-3 12, space-4 16, space-6 24, space-8 32, space-12 48, space-16 64.
 
-## 6. Components and States
-Pill badge: padding 6px 14px, 12px, 600, tracking 0.05em, radius 9999px, background #FFFFFF, border 1px #E2E8F0.
+## 6. Layout
+- Container: 1200px for nav and hero. 1280px for content sections.
+- Page gutter: clamp(16px, 4vw, 64px).
+- Sequence: Navigation Header -> Hero Split View (branding and typography left, portrait centre, pagination and indicators right).
 
-Primary Button: #111 fill, #FFF text. Hover scale 1.02 plus opacity 0.9. Active scale 0.98, #000. Disabled opacity 0.4, cursor not-allowed. Loading shows a 14px spinner and drops the arrow.
-Secondary Button: #FFF fill, 1px #E2E8F0 border. Hover border #111. Active #F4F4F4. Disabled opacity 0.4.
-Text Input: 1px #E2E8F0 border, 10px radius, #FFF fill. Hover border #94A3B8. Focus border #111 plus 2px ring. Error border #EF4444 plus message. Valid border #10B981. Disabled #F8FAFC at 0.5 opacity.
-Card: #FFF, 1px #E2E8F0, 16px radius. Hover translateY(-2px) plus 0 8px 30px rgba(0,0,0,0.08). Loading uses a shimmer skeleton on the cover.
-Focus-visible: outline 2px solid #0F172A, offset 2px.
+### Navigation Header
+max-width 1200px, height 72px, padding 0 32px, margin 0 auto, border 0, box-shadow none, background transparent, position relative, z-index 30. Left group: 40px black pill badge with 32px gap to links. Links 14px/500 #64748B, current link 600 #0A0A0A. Mobile below 768px uses a toggle plus a white card panel.
 
-## 7. Motion
-- revealUp: opacity 0 to 1, translateY(20px) to 0, 0.5s cubic-bezier(0.16,1,0.3,1), 0.12s stagger per index. Implemented as a CSS animation that is cleared on animationend so it cannot out-specify component hover and disabled states.
-- floatHUD: 0/100 translateY(0), 50% translateY(-6px), 5s ease-in-out infinite.
-- fadeIn: opacity 0 to 1, translateY(10px) to 0, 0.3s ease-out, used for the mobile nav panel.
-- All component state changes transition in 0.25s.
-- prefers-reduced-motion disables reveal, floatHUD, shimmer and the mobile nav animation.
+### Hero Card
+max-width 1200px, margin 0 auto, min-height calc(100vh - 100px) with calc(100svh - 100px) fallback, padding 32px 48px (32px 24px below 768px), border-radius 32px, background #FFFFFF, border 1px solid #EAEAEA, box-shadow 0 20px 40px rgba(0,0,0,0.03), overflow hidden, position relative, z-index 10.
 
-## 8. Accessibility
-- 122 live text nodes audited for contrast. 0 failures.
-- Keyboard focus ring verified across the tab order.
-- Skip link, aria-expanded on the menu toggle, aria-invalid plus role=alert on field errors, aria-live form status.
+Inner grid: 12 columns, gap 48px, align-items center, at 1024px and up. Below 1024px a single column with the same gap.
 
+| Item | Span | Content |
+|---|---|---|
+| hero-copy | 5 | eyebrow row, display title, meta block, scroll cue |
+| hero-visual | 6 | 420x480 portrait frame plus two callouts |
+| hero-pager | 1 | current number, five dots, total number |
 
-## 9. v4 - Full-Screen Canvas Layout
-Revision requested after v3: the hero must fill the entire viewport instead of sitting as a floating card inside a rail, and the page must use the whole screen.
+Note: spans are only declared inside the 1024px media query. Declaring them on a single-column grid creates implicit columns and 48px gaps that overflow the card.
 
-### 9.1 Responsive gutter token
-- --gutter: clamp(24px, 4.5vw, 88px). Replaces the three fixed container paddings (24 / 32 / 64). Single source of edge spacing.
-- --container-full: 1920px. Content rail cap, so text lines stay readable on ultrawide displays.
-- 390px viewport -> 24px gutter. 1440px -> 64.8px. 1920px -> 86.4px. 2560px+ -> capped at 88px.
+## 7. Component Details
+### Hero copy
+- Eyebrow row: 6px dot plus 10px uppercase label, 8px gap, 16px bottom margin.
+- Title: Display 1, 32px bottom margin.
+- Meta block: 16px top padding, border-top 1px #F1F5F9, 16px gap, label 12px uppercase, paragraph 14px #64748B max-width 28rem.
+- Scroll cue: 48px top margin, 16x28 mouse outline (2px #CBD5E1) with a 4x6 bouncing wheel, 12px/500 label.
 
-### 9.2 Hero canvas
-- .hero is a flex track with min-height 100svh (100vh fallback).
-- .hero-canvas is width 100%, max-width none, min-height 100svh, margin 0, border-radius 0, no side or top border, no shadow. The only separation is a 1px #E2E8F0 bottom border.
-- Padding: 132px 152px top (breakpoint dependent), --gutter left and right, 64px bottom. The top value clears the fixed nav pill.
-- Content is vertically centred with flex justify-content center, so the copy block and the portrait sit on the viewport mid-line at every height.
-- A single ::before layer paints radial-gradient(58% 62% at 72% 46%, rgba(255,255,255,0.94), transparent 72%) behind the portrait column. Flat canvas is preserved, the wash only lifts the subject.
-- .hero-grid carries position relative and z-index 1 so it always paints above that wash.
+### Hero frame
+width 100%, max-width 420px, height 480px, border-radius 16px, background linear-gradient(180deg,#F1F5F9,#E2E8F0), box-shadow inset 0 2px 4px rgba(0,0,0,0.05), overflow hidden. Image object-fit cover, object-position center 20%, filter grayscale(1) contrast(1.06).
 
-### 9.3 Scaling subject
-- Portrait: width 100%. Height is viewport driven - clamp(330px,44vh,460px) base, clamp(380px,52vh,580px) at 640px, clamp(440px,60vh,760px) at 1024px. At 1024px and up max-width is released so the frame fills all 7 columns of the asymmetric grid.
-- Measured at 1920x1080: portrait 999 x 648 at x 834. Grid columns: copy span 5, visual span 7, gap 48px.
+### Floating callout cards
+- A: top 48px, right 32px. B: bottom 64px, left 16px, max-width 220px.
+- Wrapper carries the float: floatBadge 4s ease-in-out infinite, 0 to -6px. B delayed 1.6s. Hover lift lives on the inner card so the two transforms do not fight.
+- Card: padding 8px 16px (B: 10px), border-radius 12px, background rgba(255,255,255,0.9), backdrop-filter blur(12px), border 1px solid rgba(226,232,240,0.8), shadow-lg, 12px/600 #1E293B (B: 11px). Hover: translateY(-1px) plus shadow-card. Focus-visible: 2px ring.
 
-### 9.4 Widened sections
-- .container max-width is now --container-full with the clamp gutter. All sections use the same rail as the hero.
-- Work grid stays at 2 columns for four projects (no orphan row). Cover height becomes viewport relative above 1280px: clamp(300px,34vh,440px), so a full-width card does not become an enormous 16:10 slab.
-- Contact card expands to the full rail. The form inside is capped at 900px so fields stay usable.
-- Nav pill width is calc(100% - (--gutter * 2)) capped at --container-full, so it tracks the same rail as content.
-- Pager dots move to a 24px right offset to stay clear of the clamp gutter.
+### Pagination
+- Current number 12px/700 #0A0A0A, total 12px/700 #64748B, 12px gaps, vertical at 1024px and up, horizontal below.
+- Dot: 12x12 button, transparent 2px border, 4px inner dot #CBD5E1. Active gets a #0A0A0A 2px ring and a #0A0A0A inner dot. Hit area extended to 24px via a ::before with inset -6px.
 
-### 9.5 Verified after the change
-| Check | 1920 | 1440 | 768 | 390 |
-|---|---|---|---|---|
-| hero canvas equals viewport | 1920x1080 | 1440x900 | 768x1024 | 390x852 |
-| canvas border-radius | 0 | 0 | 0 | 0 |
-| canvas border top / sides | 0 | 0 | 0 | 0 |
-| horizontal overflow | none | none | none | none |
-| console errors | 0 | 0 | 0 | 0 |
-| contrast failures (all content forced visible) | 0 | 0 | 0 | 0 |
-| reveal elements left hidden after full scroll | 0 | 0 | 0 | 0 |
-| broken images | 0/5 | 0/5 | 0/5 | 0/5 |
-| classes with no CSS rule | 0 | 0 | 0 | 0 |
+## 8. Motion
+- Reveal: opacity 0 to 1, translateY 20px to 0, 0.5s cubic-bezier(0.16,1,0.3,1), 120ms stagger via --d.
+- floatBadge: 0 and 100 percent translateY(0), 50 percent translateY(-6px), 4s ease-in-out infinite.
+- mouseBounce: 0 and 100 percent translateY(0), 50 percent translateY(8px), 1.6s.
+- All animation and transition disabled under prefers-reduced-motion.
 
-Pixel verification on the 1920x1080 hero capture: corners and the full top row sample exactly #F4F4F4, confirming no card frame remains. The portrait occupies x 834 to 1834, matching the 7 column span, with the 86.4px gutter on the right.
+## 9. Accessibility
+- Focus-visible: outline 2px solid #0A0A0A, offset 2px. Verified on nav links, pager dots, chips, buttons, inputs.
+- Contrast: 111 live text nodes audited, 0 failures, minimum ratio 4.51:1.
+- Pager dots are real buttons with aria-label and aria-current, arrow key, Home and End support, and an aria-live region on the meta block.
+- The pager is hidden when JavaScript is unavailable so no dead controls are exposed.
+
+### Deliberate deviations from the brief
+| Brief | Built | Why |
+|---|---|---|
+| Hero eyebrow #94A3B8 | #64748B | #94A3B8 on white is 2.56:1, a hard WCAG AA fail |
+| Scroll cue #94A3B8 | #64748B | Same reason |
+| Total number #94A3B8 | #64748B | Same reason, and it is meaningful text |
+| Muted #64748B on #F8F9FA claimed 5.1:1 | derived #5D6879 on canvas | Measures 4.33:1, added a canvas-safe variant |
+| Hero vertical padding 64px (JSX py-16) | 32px | Section 6 box model says 32px 48px and is the authoritative spec |
+| Meta label 16px Heading 3 | 12px | The JSX sets text-xs tracking-wider on this label |
+| Dot gap 8px | 8px between 12px hit boxes | Keeps the 4px dot size exact while giving a usable target |
+| Nav has no wordmark | Badge only | Matches the JSX and the "brand logo pill framing" trait |

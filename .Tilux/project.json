@@ -1,19 +1,19 @@
 {
   "name": "Tilux Portfolio",
-  "version": "3.0",
+  "version": "5.0",
   "stack": [
     "HTML",
     "CSS",
     "vanilla JS"
   ],
   "theme": "light studio only",
-  "canvas": "#F4F4F4",
+  "canvas": "#F8F9FA",
   "fonts": [
     "Plus Jakarta Sans"
   ],
   "sections": [
-    "nav pill",
-    "hero canvas",
+    "navigation header",
+    "hero split view",
     "work",
     "services",
     "experience",
@@ -21,34 +21,82 @@
     "footer"
   ],
   "tokens": {
-    "primary": "#111111",
-    "primary_hover": "#222222",
+    "primary": "#0A0A0A",
+    "primary_hover": "#171717",
     "primary_active": "#000000",
-    "accent": "#000000",
+    "primary_subdued": "#737373",
+    "accent": "#0A0A0A",
     "success": "#10B981",
     "warning": "#F59E0B",
     "danger": "#EF4444",
-    "bg_app": "#F4F4F4",
+    "bg_app": "#F8F9FA",
     "surface_1": "#FFFFFF",
-    "surface_2": "rgba(255,255,255,0.85)",
-    "surface_3": "#FFFFFF",
+    "surface_2": "#FFFFFF",
+    "surface_3": "#F1F5F9",
+    "surface_glass": "rgba(255,255,255,0.9)",
     "border_base": "#E2E8F0",
-    "border_muted": "#CBD5E1",
+    "border_muted": "#F1F5F9",
+    "border_hero": "#EAEAEA",
     "border_hover": "#94A3B8",
-    "border_active": "#0F172A",
-    "text_primary": "#0F172A",
+    "border_active": "#0A0A0A",
+    "dot": "#0F172A",
+    "text_primary": "#0A0A0A",
     "text_muted": "#64748B",
     "text_muted_on_app": "#5D6879",
     "text_disabled": "#CBD5E1",
     "text_inverse": "#FFFFFF",
-    "text_accent": "#000000",
-    "backdrop_blur": "blur(16px)",
-    "shadow_glow": "0 8px 30px rgba(0,0,0,0.08)",
-    "shadow_card": "0 4px 20px rgba(0,0,0,0.04)"
+    "text_badge": "#1E293B",
+    "backdrop_blur": "blur(12px)",
+    "shadow_glow": "0 0 20px rgba(0,0,0,0.05)",
+    "shadow_card": "0 10px 30px rgba(0,0,0,0.04)",
+    "shadow_hero": "0 20px 40px rgba(0,0,0,0.03)"
+  },
+  "radii": {
+    "pill": "9999px",
+    "hero": "32px",
+    "card": "24px",
+    "frame": "16px",
+    "callout": "12px",
+    "input": "12px"
+  },
+  "layout": {
+    "nav": "1200px / 72px / 0 32px / border 0 / shadow none / transparent",
+    "hero": "1200px / calc(100vh - 100px) / 32px 48px / 32px radius / #FFFFFF / 1px #EAEAEA",
+    "hero_grid": "12 columns, 48px gap, spans 5 / 6 / 1",
+    "container_sections": "1280px"
+  },
+  "hero_slider": {
+    "type": "manual showreel pagination",
+    "slides": 5,
+    "changes": [
+      "eyebrow",
+      "meta label",
+      "meta paragraph",
+      "callout A",
+      "callout B",
+      "current number"
+    ],
+    "constant": [
+      "display title",
+      "monochrome portrait"
+    ],
+    "keyboard": [
+      "ArrowUp",
+      "ArrowDown",
+      "ArrowLeft",
+      "ArrowRight",
+      "Home",
+      "End"
+    ],
+    "autoplay": false
   },
   "deviations": [
-    "Derived --color-text-muted-on-app because the brief's muted token measures 4.33:1 on the app canvas (fails AA); the token itself is kept exactly as specified.",
-    "Dark theme removed because the brief defines no dark tokens.",
-    "Hero carries no CTA buttons because the specified hero component contains none."
+    "Hero eyebrow, scroll cue and total number use #64748B instead of the brief's #94A3B8, which measures 2.56:1 on white and fails WCAG AA.",
+    "Derived --color-text-muted-on-app (#5D6879) because #64748B measures 4.33:1 on the #F8F9FA canvas; the specified token is kept exactly as given and used on white surfaces.",
+    "Hero vertical padding is 32px per the section 6 box model, not the 64px implied by py-16 in the JSX blueprint.",
+    "Hero meta label is 12px per the JSX text-xs, not the 16px Heading 3 in the type scale.",
+    "Mobile keeps a menu toggle although the JSX hides links below 768px, because hiding all navigation on phones breaks the site.",
+    "Anchor offset clamps to 0 near the top so the Home link returns to the top of the page.",
+    "Hero pagination is a real 5-slide showreel because the build must contain no placeholder controls."
   ]
 }
