@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tilux - Designer &amp; Developer</title>
+<meta name="description" content="Tilux is a designer and developer based in Lagos building clear, usable, conversion-focused digital products for web and mobile.">
+<meta name="theme-color" content="#FAFAFA">
+<meta property="og:title" content="Tilux - Designer &amp; Developer">
+<meta property="og:description" content="Clear, usable, conversion-focused digital products for web and mobile.">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20261006a">
+<script>
+(function(){
+  var t = null;
+  try { t = localStorage.getItem('tilux-theme'); } catch (e) {}
+  if (t !== 'light' && t !== 'dark') {
+    t = 'light';
+    try { if (window.matchMedia('(prefers-color-scheme: dark)').matches) t = 'dark'; } catch (e) {}
+  }
+  document.documentElement.setAttribute('data-theme', t);
+  document.documentElement.classList.add('js');
+})();
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="logo" href="#top" aria-label="Tilux, back to top">
+      <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <rect class="logo-bg" width="32" height="32" rx="9"></rect>
+        <path class="logo-fg" d="M9.5 12h13M16 12v11.5"></path>
+      </svg>
+      <span class="logo-text">Tilux</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to dark theme">
+        <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="4.2"></circle>
+          <path d="M12 2.6v2.2M12 19.2v2.2M4.2 12H2M22 12h-2.2M6.3 6.3 4.8 4.8M19.2 19.2l-1.5-1.5M17.7 6.3l1.5-1.5M4.8 19.2l1.5-1.5"></path>
+        </svg>
+        <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.5 8.5 0 1 0 10.2 10.2Z"></path>
+        </svg>
+      </button>
+      <a class="btn btn-primary btn-sm" href="mailto:hello@tilux.dev">Email me</a>
+      <button class="icon-btn menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+        <span class="bar"></span><span class="bar"></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-nav" id="mobileNav" hidden>
+    <a href="#work">Work</a>
+    <a href="#services">Services</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero" id="top">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="pill reveal"><span class="dot" aria-hidden="true"></span>Available for new projects</span>
+      <h1 class="display reveal" style="--d:1">Tilux</h1>
+      <p class="hero-lead reveal" style="--d:2">Designer &amp; developer crafting digital products that are clear, usable and built to convert.</p>
+      <p class="hero-body reveal" style="--d:3">I'm Tilux, based in Lagos. I take rough ideas through research, interface design and production front-end - shipping web and mobile products with a focus on clarity, motion and detail.</p>
+      <div class="hero-actions reveal" style="--d:4">
+        <a class="btn btn-primary" href="#contact">Let's collaborate<span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn-secondary" href="#work">View selected work</a>
+      </div>
+      <ul class="hero-tags reveal" style="--d:5">
+        <li>Product Design</li>
+        <li>Front-end Engineering</li>
+        <li>Design Systems</li>
+        <li>Automation</li>
+      </ul>
+    </div>
+
+    <aside class="hero-card reveal" style="--d:3">
+      <div class="hero-card-media">
+        <img src="assets/portrait.jpg" width="768" height="728" alt="Portrait of Tilux">
+      </div>
+      <div class="hero-card-foot">
+        <div>
+          <strong>Tilux</strong>
+          <span>Designer &amp; Developer</span>
+        </div>
+        <span class="pill pill-quiet"><span class="dot" aria-hidden="true"></span>Lagos, NG</span>
+      </div>
+    </aside>
+  </div>
+
+  <div class="container">
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Web Design</span><span>&#10022;</span><span>React &amp; React Native</span><span>&#10022;</span><span>Design Systems</span><span>&#10022;</span><span>Realtime Apps</span><span>&#10022;</span><span>Performance</span><span>&#10022;</span>
+        <span>Web Design</span><span>&#10022;</span><span>React &amp; React Native</span><span>&#10022;</span><span>Design Systems</span><span>&#10022;</span><span>Realtime Apps</span><span>&#10022;</span><span>Performance</span><span>&#10022;</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="work">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow reveal">Selected Work</p>
+        <h2 class="h1 reveal" style="--d:1">Projects designed and built end to end.</h2>
+      </div>
+      <div class="filters reveal" style="--d:2" role="group" aria-label="Filter projects">
+        <button class="chip is-active" type="button" data-filter="all">All</button>
+        <button class="chip" type="button" data-filter="web">Web</button>
+        <button class="chip" type="button" data-filter="mobile">Mobile</button>
+      </div>
+    </div>
+
+    <div class="work-grid" id="workGrid">
+
+      <article class="card work-card reveal" data-cat="mobile">
+        <div class="card-cover">
+          <div class="cover-lc" aria-hidden="true">
+            <div class="lc-phone">
+              <span class="lc-bar"></span>
+              <span class="lc-heart"></span>
+              <span class="lc-line"></span>
+              <span class="lc-line short"></span>
+            </div>
+            <div class="lc-bubble a"></div>
+            <div class="lc-bubble b"></div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <h3 class="h3">LoveCount</h3>
+            <span class="card-year">Mobile</span>
+          </div>
+          <p>Realtime app for couples. Expo and React Native on a custom Firebase backend, with live sync, chat and WebRTC calling.</p>
+          <ul class="tag-row">
+            <li>React Native</li><li>Firebase</li><li>WebRTC</li>
+          </ul>
+          <a class="card-link" href="https://github.com/Tilux01" target="_blank" rel="noopener">View on GitHub<span class="arrow" aria-hidden="true">&rarr;</span></a>
+        </div>
+      </article>
+
+      <article class="card work-card reveal" style="--d:1" data-cat="web">
+        <div class="card-cover">
+          <img src="assets/work-automotive.jpg" width="1440" height="900" alt="Tilux Automotive homepage" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <h3 class="h3">Tilux Automotive</h3>
+            <span class="card-year">Web</span>
+          </div>
+          <p>Boutique performance car dealership. Full-bleed hero, curated inventory, live carousel and a booking flow built to convert.</p>
+          <ul class="tag-row">
+            <li>Design</li><li>Front-end</li><li>Motion</li>
+          </ul>
+          <a class="card-link" href="https://github.com/Tilux01/tilux-automotive" target="_blank" rel="noopener">View project<span class="arrow" aria-hidden="true">&rarr;</span></a>
+        </div>
+      </article>
+
+      <article class="card work-card reveal" style="--d:2" data-cat="web">
+        <div class="card-cover">
+          <img src="assets/work-freshreddy.jpg" width="1440" height="900" alt="Fresh and Reddy homepage" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <h3 class="h3">Fresh &amp; Reddy</h3>
+            <span class="card-year">Web</span>
+          </div>
+          <p>Premium office coffee, tea and pantry brand. Seven pages, a hand-built product carousel, swipe gestures and lead capture.</p>
+          <ul class="tag-row">
+            <li>Brand</li><li>Front-end</li><li>CSS 3D</li>
+          </ul>
+          <a class="card-link" href="https://github.com/Tilux01/fresh-and-reddy" target="_blank" rel="noopener">View project<span class="arrow" aria-hidden="true">&rarr;</span></a>
+        </div>
+      </article>
+
+      <article class="card work-card reveal" style="--d:3" data-cat="web">
+        <div class="card-cover">
+          <img src="assets/work-isafast.png" width="1200" height="750" alt="Isafast Venture homepage" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <h3 class="h3">Isafast Venture</h3>
+            <span class="card-year">Web</span>
+          </div>
+          <p>Venture studio marketing presence. Editorial layout, structured service hierarchy and a clean responsive grid.</p>
+          <ul class="tag-row">
+            <li>Design</li><li>Layout</li><li>Responsive</li>
+          </ul>
+          <a class="card-link" href="https://github.com/Tilux01/isafast-venture" target="_blank" rel="noopener">View project<span class="arrow" aria-hidden="true">&rarr;</span></a>
+        </div>
+      </article>
+
+      <p class="work-empty" id="workEmpty" hidden>No projects in this category.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="services">
+  <div class="container services-grid">
+    <div class="services-intro">
+      <p class="eyebrow reveal">Services</p>
+      <h2 class="h1 reveal" style="--d:1">What I do, and how it ships.</h2>
+      <p class="reveal" style="--d:2">A small, focused set of things done properly. Each engagement ends in something you can actually use, not a deck.</p>
+      <a class="btn btn-secondary reveal" style="--d:3" href="#contact">Start a project</a>
+    </div>
+
+    <div class="accordion reveal" style="--d:2">
+      <div class="acc-item is-open">
+        <button class="acc-head" type="button" aria-expanded="true" aria-controls="acc1">
+          <span class="acc-num">01</span>
+          <span class="acc-title">Product &amp; UI Design</span>
+          <span class="acc-glyph" aria-hidden="true"></span>
+        </button>
+        <div class="acc-panel" id="acc1" role="region">
+          <div class="acc-inner">
+            <p>Wireframes through to polished interface. Design systems, reusable components and user flows that stay consistent as the product grows.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-head" type="button" aria-expanded="false" aria-controls="acc2">
+          <span class="acc-num">02</span>
+          <span class="acc-title">Front-end Engineering</span>
+          <span class="acc-glyph" aria-hidden="true"></span>
+        </button>
+        <div class="acc-panel" id="acc2" role="region">
+          <div class="acc-inner">
+            <p>Semantic, accessible HTML, modern CSS and well-structured JavaScript. Responsive, fast and maintainable by whoever touches it next.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-head" type="button" aria-expanded="false" aria-controls="acc3">
+          <span class="acc-num">03</span>
+          <span class="acc-title">Design Systems</span>
+          <span class="acc-glyph" aria-hidden="true"></span>
+        </button>
+        <div class="acc-panel" id="acc3" role="region">
+          <div class="acc-inner">
+            <p>Tokens, type scales, spacing rules and a documented component library, so a team can ship new screens without guessing at values.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-head" type="button" aria-expanded="false" aria-controls="acc4">
+          <span class="acc-num">04</span>
+          <span class="acc-title">Mobile &amp; Realtime Apps</span>
+          <span class="acc-glyph" aria-hidden="true"></span>
+        </button>
+        <div class="acc-panel" id="acc4" role="region">
+          <div class="acc-inner">
+            <p>Expo and React Native apps wired to a live backend - realtime data, presence, chat and calling, tested across two real devices.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-head" type="button" aria-expanded="false" aria-controls="acc5">
+          <span class="acc-num">05</span>
+          <span class="acc-title">Automation &amp; Tooling</span>
+          <span class="acc-glyph" aria-hidden="true"></span>
+        </button>
+        <div class="acc-panel" id="acc5" role="region">
+          <div class="acc-inner">
+            <p>Scripted workflows, task automation and internal tools that strip out the repetitive work so the real work gets the time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="experience">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow reveal">Experience</p>
+        <h2 class="h1 reveal" style="--d:1">A short history of shipped work.</h2>
+      </div>
+    </div>
+
+    <ol class="timeline">
+      <li class="timeline-row reveal">
+        <span class="tl-period">2024 &mdash; Present</span>
+        <div class="tl-body">
+          <h3 class="h3">Independent Designer &amp; Developer</h3>
+          <p class="tl-org">Freelance / Remote</p>
+          <p>Designing and building web and mobile products end to end, from brand system through to shipped interface, for clients and personal ventures.</p>
+        </div>
+      </li>
+      <li class="timeline-row reveal" style="--d:1">
+        <span class="tl-period">2023 &mdash; 2024</span>
+        <div class="tl-body">
+          <h3 class="h3">Front-end Developer</h3>
+          <p class="tl-org">Contract work</p>
+          <p>Delivered responsive, accessible marketing sites and dashboards, own the layout system and component styling.</p>
+        </div>
+      </li>
+      <li class="timeline-row reveal" style="--d:2">
+        <span class="tl-period">2022 &mdash; 2023</span>
+        <div class="tl-body">
+          <h3 class="h3">UI / UX Designer</h3>
+          <p class="tl-org">Studio &amp; client projects</p>
+          <p>Turned written briefs into interface systems, interactive prototypes and clean handoff specs.</p>
+        </div>
+      </li>
+      <li class="timeline-row reveal" style="--d:3">
+        <span class="tl-period">2021 &mdash; Present</span>
+        <div class="tl-body">
+          <h3 class="h3">Computer Science Student</h3>
+          <p class="tl-org">University</p>
+          <p>Studying software engineering alongside hands-on product work, shipping side projects the whole way through.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section cta-section" id="contact">
+  <div class="container">
+    <div class="cta-card reveal">
+      <span class="pill pill-quiet"><span class="dot" aria-hidden="true"></span>Replies within a day</span>
+      <h2 class="display-sm">Have a project in mind?</h2>
+      <p>Tell me what you're building. I'll tell you how I'd approach it - the scope, the stack and the rough shape of the build. No pitch deck required.</p>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="mailto:hello@tilux.dev?subject=New%20project">Start a conversation<span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn-secondary" href="#work">See the work</a>
+      </div>
+      <p class="cta-alt">Prefer email? <a href="mailto:hello@tilux.dev">hello@tilux.dev</a></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="logo" href="#top" aria-label="Tilux, back to top">
+        <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <rect class="logo-bg" width="32" height="32" rx="9"></rect>
+          <path class="logo-fg" d="M9.5 12h13M16 12v11.5"></path>
+        </svg>
+        <span class="logo-text">Tilux</span>
+      </a>
+      <p>Designer and developer based in Lagos, Nigeria, building clear and usable digital products for the web and mobile.</p>
+    </div>
+
+    <nav class="footer-col" aria-label="Work">
+      <h4>Work</h4>
+      <a href="#work">All projects</a>
+      <a href="https://github.com/Tilux01/tilux-automotive" target="_blank" rel="noopener">Tilux Automotive</a>
+      <a href="https://github.com/Tilux01/fresh-and-reddy" target="_blank" rel="noopener">Fresh &amp; Reddy</a>
+      <a href="https://github.com/Tilux01/isafast-venture" target="_blank" rel="noopener">Isafast Venture</a>
+    </nav>
+
+    <nav class="footer-col" aria-label="Explore">
+      <h4>Explore</h4>
+      <a href="#services">Services</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+      <a href="#top">Back to top</a>
+    </nav>
+
+    <nav class="footer-col" aria-label="Elsewhere">
+      <h4>Elsewhere</h4>
+      <a href="https://github.com/Tilux01" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://dribbble.com" target="_blank" rel="noopener">Dribbble</a>
+      <a href="https://twitter.com" target="_blank" rel="noopener">Twitter / X</a>
+      <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+  </div>
+
+  <div class="container footer-meta">
+    <span>&copy; <span id="year">2026</span> Tilux. Built by hand.</span>
+    <span>Lagos, Nigeria &mdash; <span id="clock">--:--</span> WAT</span>
+  </div>
+</footer>
+
+<script src="script.js?v=20261006a"></script>
+</body>
+</html>

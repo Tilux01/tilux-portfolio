@@ -1,0 +1,35 @@
+{
+  "project": "Tilux Portfolio",
+  "type": "personal portfolio, single page",
+  "stack": "vanilla HTML + CSS + JS, no build step",
+  "design_system": "editorial minimalist, dual theme (light default)",
+  "brand_name": "Tilux",
+  "role": "Designer & Developer",
+  "location": "Lagos, Nigeria",
+  "font": "Plus Jakarta Sans",
+  "theme_default": "light",
+  "theme_toggle": true,
+  "sections": [
+    "navbar",
+    "hero",
+    "selected-work",
+    "services",
+    "experience",
+    "cta",
+    "footer"
+  ],
+  "contact_email": "hello@tilux.dev",
+  "socials": [
+    "github",
+    "dribbble",
+    "twitter",
+    "instagram"
+  ],
+  "github_user": "Tilux01",
+  "server_port": 8082,
+  "no_comments": true,
+  "no_placeholder_content": true,
+  "reused_assets": [
+    "assets/portrait.jpg"
+  ]
+}

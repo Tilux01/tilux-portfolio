@@ -1,0 +1,7 @@
+.Tilux/legacy/
+.Tilux/images/
+.Tilux/shot_*.png
+.Tilux/_vision_analysis.md
+.DS_Store
+Thumbs.db
+*.log
