@@ -42,3 +42,23 @@ action: scroll, filter, accordion, theme change, mailto, or external social URL.
 - No comments anywhere in shipped code.
 - No lorem ipsum, no placeholder images, no fake hrefs.
 - No em dashes in copy.
+
+
+## Revision 3 - spec-faithful layout pass
+
+Owner review flagged that v2 followed the colour and type tokens but not the spec layout.
+Confirmed and corrected:
+
+- Hero rebuilt as the single centred card from the spec component blueprint.
+  max-width 1024px, centred, surface-1 background, 1px border, 16px radius, card shadow.
+  Removed the split two-column grid, the portrait card, the tag row and the marquee strip.
+- Section vertical rhythm reduced from 96px to the spec range. Now 48px mobile / 64px desktop
+  (space-12 / space-16 on the 8pt scale).
+- Hero actions now exactly match section 5B: primary 12px 28px pill on #111111,
+  secondary transparent with 1px border.
+- Added the spec text input component with full state matrix: default, hover, focus ring,
+  error, disabled, valid. Wired into a real contact form with genuine validation.
+- Added the missing button states: disabled (opacity .4) and loading (spinner).
+- Added card skeleton shimmer on cover image load.
+- Contrast remediation: six pairs failed WCAG on the raw spec tokens. Kept every spec token
+  pristine and introduced derived text-safe variants used only where a token renders as text.

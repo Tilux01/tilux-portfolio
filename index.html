@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tilux - Designer &amp; Developer</title>
-<meta name="description" content="Tilux is a designer and developer based in Lagos building clear, usable, conversion-focused digital products for web and mobile.">
+<meta name="description" content="Tilux is a designer and developer building clear, usable, conversion-focused digital products for web and mobile.">
 <meta name="theme-color" content="#FAFAFA">
 <meta property="og:title" content="Tilux - Designer &amp; Developer">
 <meta property="og:description" content="Clear, usable, conversion-focused digital products for web and mobile.">
@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261006a">
+<link rel="stylesheet" href="styles.css?v=20261006c">
 <script>
 (function(){
   var t = null;
@@ -42,6 +42,7 @@
     </a>
 
     <nav class="nav-links" aria-label="Primary">
+      <a href="#top" class="is-current">Home</a>
       <a href="#work">Work</a>
       <a href="#services">Services</a>
       <a href="#experience">Experience</a>
@@ -66,6 +67,7 @@
   </div>
 
   <div class="mobile-nav" id="mobileNav" hidden>
+    <a href="#top">Home</a>
     <a href="#work">Work</a>
     <a href="#services">Services</a>
     <a href="#experience">Experience</a>
@@ -76,43 +78,15 @@
 <main id="main">
 
 <section class="hero" id="top">
-  <div class="container hero-grid">
-    <div class="hero-copy">
+  <div class="container">
+    <div class="hero-card">
       <span class="pill reveal"><span class="dot" aria-hidden="true"></span>Available for new projects</span>
       <h1 class="display reveal" style="--d:1">Tilux</h1>
-      <p class="hero-lead reveal" style="--d:2">Designer &amp; developer crafting digital products that are clear, usable and built to convert.</p>
-      <p class="hero-body reveal" style="--d:3">I'm Tilux, based in Lagos. I take rough ideas through research, interface design and production front-end - shipping web and mobile products with a focus on clarity, motion and detail.</p>
+      <p class="body-lg reveal" style="--d:2">UI/UX designer and developer building digital products that are clear, usable and conversion focused.</p>
+      <p class="body reveal" style="--d:3">I take rough ideas through research, interface design and production front-end - shipping web and mobile products with a focus on clarity, motion and detail.</p>
       <div class="hero-actions reveal" style="--d:4">
         <a class="btn btn-primary" href="#contact">Let's collaborate<span class="arrow" aria-hidden="true">&rarr;</span></a>
-        <a class="btn btn-secondary" href="#work">View selected work</a>
-      </div>
-      <ul class="hero-tags reveal" style="--d:5">
-        <li>Product Design</li>
-        <li>Front-end Engineering</li>
-        <li>Design Systems</li>
-        <li>Automation</li>
-      </ul>
-    </div>
-
-    <aside class="hero-card reveal" style="--d:3">
-      <div class="hero-card-media">
-        <img src="assets/portrait.jpg" width="768" height="728" alt="Portrait of Tilux">
-      </div>
-      <div class="hero-card-foot">
-        <div>
-          <strong>Tilux</strong>
-          <span>Designer &amp; Developer</span>
-        </div>
-        <span class="pill pill-quiet"><span class="dot" aria-hidden="true"></span>Lagos, NG</span>
-      </div>
-    </aside>
-  </div>
-
-  <div class="container">
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track">
-        <span>Web Design</span><span>&#10022;</span><span>React &amp; React Native</span><span>&#10022;</span><span>Design Systems</span><span>&#10022;</span><span>Realtime Apps</span><span>&#10022;</span><span>Performance</span><span>&#10022;</span>
-        <span>Web Design</span><span>&#10022;</span><span>React &amp; React Native</span><span>&#10022;</span><span>Design Systems</span><span>&#10022;</span><span>Realtime Apps</span><span>&#10022;</span><span>Performance</span><span>&#10022;</span>
+        <a class="btn btn-secondary" href="#work">Our services</a>
       </div>
     </div>
   </div>
@@ -143,7 +117,7 @@
             <h3 class="h3">LoveCount</h3>
             <span class="card-year">Mobile</span>
           </div>
-          <p>Realtime app for couples. Expo and React Native on a custom Firebase backend, with live sync, chat and WebRTC calling.</p>
+          <p class="body">Realtime app for couples. Expo and React Native on a custom Firebase backend, with live sync, chat and WebRTC calling.</p>
           <ul class="tag-row">
             <li>React Native</li><li>Firebase</li><li>WebRTC</li>
           </ul>
@@ -160,7 +134,7 @@
             <h3 class="h3">Tilux Automotive</h3>
             <span class="card-year">Web</span>
           </div>
-          <p>Boutique performance car dealership. Full-bleed hero, curated inventory, live carousel and a booking flow built to convert.</p>
+          <p class="body">Boutique performance car dealership. Full-bleed hero, curated inventory, live carousel and a booking flow built to convert.</p>
           <ul class="tag-row">
             <li>Design</li><li>Front-end</li><li>Motion</li>
           </ul>
@@ -177,7 +151,7 @@
             <h3 class="h3">Fresh &amp; Reddy</h3>
             <span class="card-year">Web</span>
           </div>
-          <p>Premium office coffee, tea and pantry brand. Seven pages, a hand-built product carousel, swipe gestures and lead capture.</p>
+          <p class="body">Premium office coffee, tea and pantry brand. Seven pages, a hand-built product carousel, swipe gestures and lead capture.</p>
           <ul class="tag-row">
             <li>Brand</li><li>Front-end</li><li>CSS 3D</li>
           </ul>
@@ -194,7 +168,7 @@
             <h3 class="h3">Isafast Venture</h3>
             <span class="card-year">Web</span>
           </div>
-          <p>Venture studio marketing presence. Editorial layout, structured service hierarchy and a clean responsive grid.</p>
+          <p class="body">Venture studio marketing presence. Editorial layout, structured service hierarchy and a clean responsive grid.</p>
           <ul class="tag-row">
             <li>Design</li><li>Layout</li><li>Responsive</li>
           </ul>
@@ -212,7 +186,7 @@
     <div class="services-intro">
       <p class="eyebrow reveal">Services</p>
       <h2 class="h1 reveal" style="--d:1">What I do, and how it ships.</h2>
-      <p class="reveal" style="--d:2">A small, focused set of things done properly. Each engagement ends in something you can actually use, not a deck.</p>
+      <p class="body reveal" style="--d:2">A small, focused set of things done properly. Each engagement ends in something you can actually use, not a deck.</p>
       <a class="btn btn-secondary reveal" style="--d:3" href="#contact">Start a project</a>
     </div>
 
@@ -225,7 +199,7 @@
         </button>
         <div class="acc-panel" id="acc1" role="region">
           <div class="acc-inner">
-            <p>Wireframes through to polished interface. Design systems, reusable components and user flows that stay consistent as the product grows.</p>
+            <p class="body">Wireframes through to polished interface. Design systems, reusable components and user flows that stay consistent as the product grows.</p>
           </div>
         </div>
       </div>
@@ -238,7 +212,7 @@
         </button>
         <div class="acc-panel" id="acc2" role="region">
           <div class="acc-inner">
-            <p>Semantic, accessible HTML, modern CSS and well-structured JavaScript. Responsive, fast and maintainable by whoever touches it next.</p>
+            <p class="body">Semantic, accessible HTML, modern CSS and well-structured JavaScript. Responsive, fast and maintainable by whoever touches it next.</p>
           </div>
         </div>
       </div>
@@ -251,7 +225,7 @@
         </button>
         <div class="acc-panel" id="acc3" role="region">
           <div class="acc-inner">
-            <p>Tokens, type scales, spacing rules and a documented component library, so a team can ship new screens without guessing at values.</p>
+            <p class="body">Tokens, type scales, spacing rules and a documented component library, so a team can ship new screens without guessing at values.</p>
           </div>
         </div>
       </div>
@@ -264,7 +238,7 @@
         </button>
         <div class="acc-panel" id="acc4" role="region">
           <div class="acc-inner">
-            <p>Expo and React Native apps wired to a live backend - realtime data, presence, chat and calling, tested across two real devices.</p>
+            <p class="body">Expo and React Native apps wired to a live backend - realtime data, presence, chat and calling, tested across two real devices.</p>
           </div>
         </div>
       </div>
@@ -277,7 +251,7 @@
         </button>
         <div class="acc-panel" id="acc5" role="region">
           <div class="acc-inner">
-            <p>Scripted workflows, task automation and internal tools that strip out the repetitive work so the real work gets the time.</p>
+            <p class="body">Scripted workflows, task automation and internal tools that strip out the repetitive work so the real work gets the time.</p>
           </div>
         </div>
       </div>
@@ -300,7 +274,7 @@
         <div class="tl-body">
           <h3 class="h3">Independent Designer &amp; Developer</h3>
           <p class="tl-org">Freelance / Remote</p>
-          <p>Designing and building web and mobile products end to end, from brand system through to shipped interface, for clients and personal ventures.</p>
+          <p class="body">Designing and building web and mobile products end to end, from brand system through to shipped interface, for clients and personal ventures.</p>
         </div>
       </li>
       <li class="timeline-row reveal" style="--d:1">
@@ -308,7 +282,7 @@
         <div class="tl-body">
           <h3 class="h3">Front-end Developer</h3>
           <p class="tl-org">Contract work</p>
-          <p>Delivered responsive, accessible marketing sites and dashboards, own the layout system and component styling.</p>
+          <p class="body">Delivered responsive, accessible marketing sites and dashboards, owning the layout system and component styling.</p>
         </div>
       </li>
       <li class="timeline-row reveal" style="--d:2">
@@ -316,7 +290,7 @@
         <div class="tl-body">
           <h3 class="h3">UI / UX Designer</h3>
           <p class="tl-org">Studio &amp; client projects</p>
-          <p>Turned written briefs into interface systems, interactive prototypes and clean handoff specs.</p>
+          <p class="body">Turned written briefs into interface systems, interactive prototypes and clean handoff specs.</p>
         </div>
       </li>
       <li class="timeline-row reveal" style="--d:3">
@@ -324,24 +298,57 @@
         <div class="tl-body">
           <h3 class="h3">Computer Science Student</h3>
           <p class="tl-org">University</p>
-          <p>Studying software engineering alongside hands-on product work, shipping side projects the whole way through.</p>
+          <p class="body">Studying software engineering alongside hands-on product work, shipping side projects the whole way through.</p>
         </div>
       </li>
     </ol>
   </div>
 </section>
 
-<section class="section cta-section" id="contact">
+<section class="section" id="contact">
   <div class="container">
     <div class="cta-card reveal">
-      <span class="pill pill-quiet"><span class="dot" aria-hidden="true"></span>Replies within a day</span>
-      <h2 class="display-sm">Have a project in mind?</h2>
-      <p>Tell me what you're building. I'll tell you how I'd approach it - the scope, the stack and the rough shape of the build. No pitch deck required.</p>
-      <div class="cta-actions">
-        <a class="btn btn-primary" href="mailto:hello@tilux.dev?subject=New%20project">Start a conversation<span class="arrow" aria-hidden="true">&rarr;</span></a>
-        <a class="btn btn-secondary" href="#work">See the work</a>
-      </div>
-      <p class="cta-alt">Prefer email? <a href="mailto:hello@tilux.dev">hello@tilux.dev</a></p>
+      <span class="pill"><span class="dot" aria-hidden="true"></span>Replies within a day</span>
+      <h2 class="h1">Have a project in mind?</h2>
+      <p class="body-lg">Tell me what you're building and I'll tell you how I'd approach it. Scope, stack and the rough shape of the build. No pitch deck required.</p>
+
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="field">
+          <label for="fName">Full name</label>
+          <input id="fName" name="name" type="text" autocomplete="name" placeholder="Your name">
+          <span class="field-error" id="fNameErr" role="alert"></span>
+        </div>
+        <div class="field">
+          <label for="fEmail">Email</label>
+          <input id="fEmail" name="email" type="email" autocomplete="email" placeholder="you@company.com">
+          <span class="field-error" id="fEmailErr" role="alert"></span>
+        </div>
+        <div class="field">
+          <label for="fType">Project type</label>
+          <select id="fType" name="type">
+            <option value="">Select a project type</option>
+            <option>Product &amp; UI Design</option>
+            <option>Front-end Engineering</option>
+            <option>Design Systems</option>
+            <option>Mobile &amp; Realtime App</option>
+            <option>Automation &amp; Tooling</option>
+          </select>
+          <span class="field-error" id="fTypeErr" role="alert"></span>
+        </div>
+        <div class="field field-full">
+          <label for="fMessage">Project details</label>
+          <textarea id="fMessage" name="message" rows="4" placeholder="What are you building, and what does done look like?"></textarea>
+          <span class="field-error" id="fMessageErr" role="alert"></span>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-primary" id="submitBtn" type="submit">
+            <span class="btn-label">Send project brief</span>
+            <span class="arrow" aria-hidden="true">&rarr;</span>
+          </button>
+          <p class="form-note">Prefer email? <a href="mailto:hello@tilux.dev">hello@tilux.dev</a></p>
+        </div>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
     </div>
   </div>
 </section>
@@ -358,7 +365,7 @@
         </svg>
         <span class="logo-text">Tilux</span>
       </a>
-      <p>Designer and developer based in Lagos, Nigeria, building clear and usable digital products for the web and mobile.</p>
+      <p class="body">Designer and developer building clear and usable digital products for the web and mobile.</p>
     </div>
 
     <nav class="footer-col" aria-label="Work">
@@ -392,6 +399,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=20261006a"></script>
+<script src="script.js?v=20261006c"></script>
 </body>
 </html>
