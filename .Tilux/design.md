@@ -85,3 +85,46 @@ Focus-visible: outline 2px solid #0F172A, offset 2px.
 - 122 live text nodes audited for contrast. 0 failures.
 - Keyboard focus ring verified across the tab order.
 - Skip link, aria-expanded on the menu toggle, aria-invalid plus role=alert on field errors, aria-live form status.
+
+
+## 9. v4 - Full-Screen Canvas Layout
+Revision requested after v3: the hero must fill the entire viewport instead of sitting as a floating card inside a rail, and the page must use the whole screen.
+
+### 9.1 Responsive gutter token
+- --gutter: clamp(24px, 4.5vw, 88px). Replaces the three fixed container paddings (24 / 32 / 64). Single source of edge spacing.
+- --container-full: 1920px. Content rail cap, so text lines stay readable on ultrawide displays.
+- 390px viewport -> 24px gutter. 1440px -> 64.8px. 1920px -> 86.4px. 2560px+ -> capped at 88px.
+
+### 9.2 Hero canvas
+- .hero is a flex track with min-height 100svh (100vh fallback).
+- .hero-canvas is width 100%, max-width none, min-height 100svh, margin 0, border-radius 0, no side or top border, no shadow. The only separation is a 1px #E2E8F0 bottom border.
+- Padding: 132px 152px top (breakpoint dependent), --gutter left and right, 64px bottom. The top value clears the fixed nav pill.
+- Content is vertically centred with flex justify-content center, so the copy block and the portrait sit on the viewport mid-line at every height.
+- A single ::before layer paints radial-gradient(58% 62% at 72% 46%, rgba(255,255,255,0.94), transparent 72%) behind the portrait column. Flat canvas is preserved, the wash only lifts the subject.
+- .hero-grid carries position relative and z-index 1 so it always paints above that wash.
+
+### 9.3 Scaling subject
+- Portrait: width 100%. Height is viewport driven - clamp(330px,44vh,460px) base, clamp(380px,52vh,580px) at 640px, clamp(440px,60vh,760px) at 1024px. At 1024px and up max-width is released so the frame fills all 7 columns of the asymmetric grid.
+- Measured at 1920x1080: portrait 999 x 648 at x 834. Grid columns: copy span 5, visual span 7, gap 48px.
+
+### 9.4 Widened sections
+- .container max-width is now --container-full with the clamp gutter. All sections use the same rail as the hero.
+- Work grid stays at 2 columns for four projects (no orphan row). Cover height becomes viewport relative above 1280px: clamp(300px,34vh,440px), so a full-width card does not become an enormous 16:10 slab.
+- Contact card expands to the full rail. The form inside is capped at 900px so fields stay usable.
+- Nav pill width is calc(100% - (--gutter * 2)) capped at --container-full, so it tracks the same rail as content.
+- Pager dots move to a 24px right offset to stay clear of the clamp gutter.
+
+### 9.5 Verified after the change
+| Check | 1920 | 1440 | 768 | 390 |
+|---|---|---|---|---|
+| hero canvas equals viewport | 1920x1080 | 1440x900 | 768x1024 | 390x852 |
+| canvas border-radius | 0 | 0 | 0 | 0 |
+| canvas border top / sides | 0 | 0 | 0 | 0 |
+| horizontal overflow | none | none | none | none |
+| console errors | 0 | 0 | 0 | 0 |
+| contrast failures (all content forced visible) | 0 | 0 | 0 | 0 |
+| reveal elements left hidden after full scroll | 0 | 0 | 0 | 0 |
+| broken images | 0/5 | 0/5 | 0/5 | 0/5 |
+| classes with no CSS rule | 0 | 0 | 0 | 0 |
+
+Pixel verification on the 1920x1080 hero capture: corners and the full top row sample exactly #F4F4F4, confirming no card frame remains. The portrait occupies x 834 to 1834, matching the 7 column span, with the 86.4px gutter on the right.

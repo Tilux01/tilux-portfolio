@@ -1,6 +1,6 @@
 .Tilux/legacy/
 .Tilux/images/
-.Tilux/shot_*.png
+.Tilux/*.png
 .Tilux/_vision_analysis.md
 .DS_Store
 Thumbs.db
@@ -10,4 +10,3 @@ __pycache__/
 *.pyc
 venv/
 .agents/
-.Tilux/v3_*.png
