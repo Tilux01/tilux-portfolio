@@ -4,46 +4,25 @@
   var root = document.documentElement;
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  document.querySelectorAll('[id="year"]').forEach(function(el){
-    el.textContent = new Date().getFullYear();
-  });
+  root.classList.add('js');
+
+  var yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   var clock = document.getElementById('clock');
   if (clock) {
     var tick = function(){
       var d = new Date(Date.now() + (new Date().getTimezoneOffset() * 60000) + 3600000);
-      var hh = String(d.getHours()).padStart(2, '0');
-      var mm = String(d.getMinutes()).padStart(2, '0');
-      clock.textContent = hh + ':' + mm;
+      clock.textContent = String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
     };
     tick();
     setInterval(tick, 30000);
   }
 
-  var toggle = document.getElementById('themeToggle');
-  var applyTheme = function(t){
-    root.setAttribute('data-theme', t);
-    if (toggle) {
-      toggle.setAttribute('aria-pressed', t === 'dark' ? 'true' : 'false');
-      toggle.setAttribute('aria-label', t === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
-    }
-    var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', t === 'dark' ? '#121212' : '#FAFAFA');
-  };
-  applyTheme(root.getAttribute('data-theme') || 'light');
-  if (toggle) {
-    toggle.addEventListener('click', function(){
-      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      applyTheme(next);
-      try { localStorage.setItem('tilux-theme', next); } catch (e) {}
-    });
-  }
-
   var nav = document.getElementById('nav');
   var onScroll = function(){
     if (!nav) return;
-    if (window.scrollY > 8) nav.classList.add('is-scrolled');
-    else nav.classList.remove('is-scrolled');
+    nav.classList.toggle('is-scrolled', window.scrollY > 8);
   };
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -72,57 +51,44 @@
   }
 
   var reveals = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
-
   var show = function(el){
-    if (el.classList.contains('is-in')) return;
+    if (!el.classList.contains('reveal') || el.classList.contains('is-in')) return;
+    var done = function(e){
+      if (e.target !== el) return;
+      el.removeEventListener('animationend', done);
+      el.classList.remove('reveal', 'is-in');
+    };
+    el.addEventListener('animationend', done);
     el.classList.add('is-in');
   };
-
   var inView = function(el, pad){
     var r = el.getBoundingClientRect();
     var h = window.innerHeight || root.clientHeight;
     return r.top < (h * (pad || 1)) && r.bottom > 0;
   };
 
-  var revealAll = function(){ reveals.forEach(show); };
-
   if (reduce || !('IntersectionObserver' in window)) {
-    revealAll();
+    reveals.forEach(function(el){ el.classList.remove('reveal'); });
   } else {
-    reveals.forEach(function(el){
-      if (inView(el, 0.94)) show(el);
-    });
-
+    reveals.forEach(function(el){ if (inView(el, 0.94)) show(el); });
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
-        if (entry.isIntersecting) {
-          show(entry.target);
-          io.unobserve(entry.target);
-        }
+        if (entry.isIntersecting) { show(entry.target); io.unobserve(entry.target); }
       });
     }, { threshold: 0, rootMargin: '0px 0px -4% 0px' });
-
     reveals.forEach(function(el){ io.observe(el); });
 
     window.addEventListener('load', function(){
       reveals.forEach(function(el){ if (inView(el, 0.94)) show(el); });
     });
-
-    setTimeout(function(){
-      if (reveals.some(function(el){ return !el.classList.contains('is-in') && inView(el, 1); })) {
-        reveals.forEach(function(el){ if (inView(el, 1)) show(el); });
-      }
-    }, 600);
-
-    setTimeout(function(){
-      var vh = window.innerHeight || root.clientHeight;
-      var anyAbove = reveals.some(function(el){
-        return !el.classList.contains('is-in') && el.getBoundingClientRect().top < vh;
-      });
-      if (anyAbove) reveals.forEach(function(el){
-        if (el.getBoundingClientRect().top < vh) show(el);
-      });
-    }, 1500);
+    [600, 1500].forEach(function(t){
+      setTimeout(function(){
+        var vh = window.innerHeight || root.clientHeight;
+        reveals.forEach(function(el){
+          if (!el.classList.contains('is-in') && el.getBoundingClientRect().top < vh) show(el);
+        });
+      }, t);
+    });
   }
 
   document.querySelectorAll('.acc-head').forEach(function(head){
@@ -170,20 +136,43 @@
     }
   });
 
+  var spyLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  var pagerDots = document.querySelectorAll('.pager-dot[href^="#"]');
   var sections = document.querySelectorAll('main > section[id]');
-  var links = document.querySelectorAll('.nav-links a[href^="#"]');
-  if ('IntersectionObserver' in window && sections.length && links.length) {
+  var setActive = function(id){
+    spyLinks.forEach(function(a){ a.classList.toggle('is-current', a.getAttribute('href') === '#' + id); });
+    pagerDots.forEach(function(d){ d.classList.toggle('is-active', d.getAttribute('href') === '#' + id); });
+  };
+  if ('IntersectionObserver' in window && sections.length) {
     var spy = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
-        if (!entry.isIntersecting) return;
-        var id = entry.target.id;
-        links.forEach(function(a){
-          a.classList.toggle('is-current', a.getAttribute('href') === '#' + id);
-        });
+        if (entry.isIntersecting) setActive(entry.target.id);
       });
     }, { threshold: 0, rootMargin: '-45% 0px -50% 0px' });
     sections.forEach(function(s){ spy.observe(s); });
   }
+
+  var scrollTo = function(sel){
+    var target = document.querySelector(sel);
+    if (!target) return;
+    var y = target.getBoundingClientRect().top + window.scrollY - 104;
+    window.scrollTo({ top: y < 0 ? 0 : y, behavior: reduce ? 'auto' : 'smooth' });
+  };
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var href = a.getAttribute('href');
+      if (href === '#' || href.length < 2) return;
+      if (!document.querySelector(href)) return;
+      e.preventDefault();
+      scrollTo(href);
+      if (history.replaceState) history.replaceState(null, '', href);
+    });
+  });
+
+  document.querySelectorAll('[data-scroll]').forEach(function(btn){
+    btn.addEventListener('click', function(){ scrollTo(btn.getAttribute('data-scroll')); });
+  });
 
   var form = document.getElementById('contactForm');
   var status = document.getElementById('formStatus');
@@ -191,7 +180,7 @@
 
   var setError = function(id, msg){
     var input = document.getElementById(id);
-    if (!input) return;
+    if (!input) return true;
     var field = input.closest('.field');
     var err = document.getElementById(id + 'Err');
     field.classList.toggle('is-error', !!msg);
@@ -224,13 +213,14 @@
       e.preventDefault();
       if (status) { status.className = 'form-status'; status.textContent = ''; }
 
-      var ok = true;
-      var firstBad = null;
+      var ok = true, firstBad = null;
       Object.keys(validators).forEach(function(id){
         var input = document.getElementById(id);
         if (!input) return;
-        var good = setError(id, validators[id](input.value));
-        if (!good) { ok = false; if (!firstBad) firstBad = input; }
+        if (!setError(id, validators[id](input.value))) {
+          ok = false;
+          if (!firstBad) firstBad = input;
+        }
       });
 
       if (!ok) {
@@ -258,15 +248,17 @@
         name: document.getElementById('fName').value.trim(),
         email: document.getElementById('fEmail').value.trim(),
         type: document.getElementById('fType').value,
-        message: document.getElementById('fMessage').value.trim(),
-        at: new Date().toISOString()
+        message: document.getElementById('fMessage').value.trim()
       };
+
+      var body = 'Name: ' + data.name + '\nEmail: ' + data.email + '\nProject type: ' + data.type + '\n\n' + data.message;
+      var href = 'mailto:hello@tilux.dev?subject=' + encodeURIComponent('Project enquiry - ' + data.type) + '&body=' + encodeURIComponent(body);
 
       setTimeout(function(){
         submitBtn.classList.remove('is-loading');
         submitBtn.disabled = false;
-        var sp = submitBtn.querySelector('.spinner');
-        if (sp) sp.remove();
+        var sp2 = submitBtn.querySelector('.spinner');
+        if (sp2) sp2.remove();
         label.textContent = original;
 
         if (status) {
@@ -274,33 +266,11 @@
           status.textContent = 'Thanks ' + data.name.split(' ')[0] + '. Opening your mail client with the brief.';
         }
 
-        var body = 'Name: ' + data.name + '\n' +
-                   'Email: ' + data.email + '\n' +
-                   'Project type: ' + data.type + '\n\n' +
-                   data.message;
-        var href = 'mailto:hello@tilux.dev?subject=' + encodeURIComponent('Project enquiry - ' + data.type) +
-                   '&body=' + encodeURIComponent(body);
         window.location.href = href;
-
         form.reset();
-        form.querySelectorAll('.field').forEach(function(f){
-          f.classList.remove('is-error', 'is-valid');
-        });
+        form.querySelectorAll('.field').forEach(function(f){ f.classList.remove('is-error', 'is-valid'); });
         form.querySelectorAll('.field-error').forEach(function(fe){ fe.textContent = ''; });
       }, 550);
     });
   }
-
-  document.querySelectorAll('a[href^="#"]').forEach(function(a){
-    a.addEventListener('click', function(e){
-      var href = a.getAttribute('href');
-      if (href === '#' || href.length < 2) return;
-      var target = document.querySelector(href);
-      if (!target) return;
-      e.preventDefault();
-      var y = target.getBoundingClientRect().top + window.scrollY - 88;
-      window.scrollTo({ top: y < 0 ? 0 : y, behavior: reduce ? 'auto' : 'smooth' });
-      if (history.replaceState) history.replaceState(null, '', href);
-    });
-  });
 })();

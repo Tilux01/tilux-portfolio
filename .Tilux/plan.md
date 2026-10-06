@@ -1,64 +1,46 @@
-# Master Build Plan - Tilux Portfolio (Editorial Minimalist)
+# Build Plan - Tilux Portfolio v3
 
-## Objective
-Rebuild the portfolio site from the new editorial minimalist spec. Replace the previous
-dark-only cyberpunk build. Dual theme, Plus Jakarta Sans, 7 section sequence, zero dead UI.
+## Phase 1 - Recon
+1. Read the provided blueprint and map every token to a CSS custom property.
+2. Locate the live project and confirm the serving process and git remote.
+3. Extract and inspect existing assets; confirm image dimensions.
 
-## Deliverables
-- index.html   single page, all 7 sections, semantic landmarks
-- styles.css   token driven, light + dark theme, responsive 640/768/1024/1280
-- script.js    theme toggle, scroll reveal, accordion, work filter, form validation, counters
-- assets/portrait.jpg (reused from previous build)
-- .Tilux/design.md, .Tilux/plan.md, .Tilux/project.json
+## Phase 2 - Asset preparation
+4. Vision-analyse the source portrait against a #F4F4F4 canvas.
+5. Test three monochrome treatments, have the image model score them, keep the winner.
+6. Crop to remove the jacket detail and export assets/portrait-mono.jpg.
 
-## Execution Sequence
-1. Recon existing project, back up previous build to .Tilux/legacy/
-2. Research references, capture to .Tilux/images/
-3. Analyse reference with vision model, write .Tilux/design.md
-4. Write plan.md + project.json
-5. Build index.html: navbar, hero, work grid, service list, experience list, CTA, footer
-6. Build styles.css: tokens, base, components, sections, responsive, motion, a11y
-7. Build script.js: all behaviours
-8. Local verification pass (links, classes, console, overflow, a11y)
-9. Serve on 8082, confirm HTTP 200
-10. Git init + commit + push to github.com/Tilux01
+## Phase 3 - Foundation
+7. Write the token block exactly as specified, including radius, shadow and spacing scales.
+8. Write the type scale for 72/40/24/18/16/14/12.
+9. Build the reset, container and focus-visible ring.
 
-## Content Model
-| Section | Elements | Behaviour |
-|---|---|---|
-| Navbar | logo, 6 nav links, theme toggle, Hire me CTA | sticky, blur, smooth scroll, active link tracking |
-| Hero | status pill, H1, role, body, 2 CTA, portrait card, stats | reveal on load, counters animate |
-| Work | filter pills, 4 project cards | filter swaps cards, hover lift |
-| Services | 5 accordion rows | one open at a time, aria-expanded |
-| Experience | 4 timeline rows | reveal on scroll |
-| CTA | heading, copy, 2 buttons | primary opens mailto, secondary scrolls to work |
-| Footer | brand, 3 link columns, socials, meta | real anchors, back to top |
+## Phase 4 - Hero
+10. Fixed floating navigation pill with logo badge, links and mobile toggle.
+11. Hero canvas card with the 12-column asymmetric grid.
+12. Left column: eyebrow, display name, border-top metadata block.
+13. Right column: portrait frame with two glass HUD cards on a staggered float loop.
+14. Fixed vertical dot-pagination with scroll spy, tooltips and jump-to-section.
 
-## Unwired-Element Policy
-No element ships without behaviour. Every button, link, pill and card resolves to a real
-action: scroll, filter, accordion, theme change, mailto, or external social URL.
+## Phase 5 - Sections
+15. Selected work grid with filter chips, skeleton shimmer covers and hover lift.
+16. Services with a sticky intro and a five-item accordion.
+17. Experience timeline.
+18. Contact card with the full input and button state matrix.
+19. Footer with brand, three link columns and a live clock.
 
-## Constraints
-- No comments anywhere in shipped code.
-- No lorem ipsum, no placeholder images, no fake hrefs.
-- No em dashes in copy.
+## Phase 6 - Behaviour
+20. Reveal on scroll with IntersectionObserver and animation cleanup.
+21. Scroll spy driving both the nav and the pager dots.
+22. Accordion, filters, mobile menu, smooth scroll and form validation.
 
+## Phase 7 - Verification
+23. HTTP check on every asset.
+24. Computed-style assertions for every token and type level.
+25. Contrast audit across every live text node.
+26. Overflow check at 1440, 768 and 390.
+27. Interaction tests for accordion, filters, pager, form and the state matrix.
+28. Fix everything the audit surfaces and re-run.
 
-## Revision 3 - spec-faithful layout pass
-
-Owner review flagged that v2 followed the colour and type tokens but not the spec layout.
-Confirmed and corrected:
-
-- Hero rebuilt as the single centred card from the spec component blueprint.
-  max-width 1024px, centred, surface-1 background, 1px border, 16px radius, card shadow.
-  Removed the split two-column grid, the portrait card, the tag row and the marquee strip.
-- Section vertical rhythm reduced from 96px to the spec range. Now 48px mobile / 64px desktop
-  (space-12 / space-16 on the 8pt scale).
-- Hero actions now exactly match section 5B: primary 12px 28px pill on #111111,
-  secondary transparent with 1px border.
-- Added the spec text input component with full state matrix: default, hover, focus ring,
-  error, disabled, valid. Wired into a real contact form with genuine validation.
-- Added the missing button states: disabled (opacity .4) and loading (spinner).
-- Added card skeleton shimmer on cover image load.
-- Contrast remediation: six pairs failed WCAG on the raw spec tokens. Kept every spec token
-  pristine and introduced derived text-safe variants used only where a token renders as text.
+## Phase 8 - Ship
+29. Stage, commit and push to the existing remote.

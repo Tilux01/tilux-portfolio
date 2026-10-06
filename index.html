@@ -1,93 +1,91 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tilux - Designer &amp; Developer</title>
 <meta name="description" content="Tilux is a designer and developer building clear, usable, conversion-focused digital products for web and mobile.">
-<meta name="theme-color" content="#FAFAFA">
+<meta name="theme-color" content="#F4F4F4">
 <meta property="og:title" content="Tilux - Designer &amp; Developer">
 <meta property="og:description" content="Clear, usable, conversion-focused digital products for web and mobile.">
 <meta property="og:type" content="website">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261006c">
-<script>
-(function(){
-  var t = null;
-  try { t = localStorage.getItem('tilux-theme'); } catch (e) {}
-  if (t !== 'light' && t !== 'dark') {
-    t = 'light';
-    try { if (window.matchMedia('(prefers-color-scheme: dark)').matches) t = 'dark'; } catch (e) {}
-  }
-  document.documentElement.setAttribute('data-theme', t);
-  document.documentElement.classList.add('js');
-})();
-</script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20261007a">
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="nav" id="nav">
-  <div class="nav-inner">
-    <a class="logo" href="#top" aria-label="Tilux, back to top">
-      <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-        <rect class="logo-bg" width="32" height="32" rx="9"></rect>
-        <path class="logo-fg" d="M9.5 12h13M16 12v11.5"></path>
-      </svg>
-      <span class="logo-text">Tilux</span>
+<header class="navpill" id="nav">
+  <div class="navpill-inner">
+    <a class="brand" href="#home" aria-label="Tilux, back to top">
+      <span class="brand-badge" aria-hidden="true">T</span>
+      <span class="brand-name">Tilux</span>
     </a>
 
     <nav class="nav-links" aria-label="Primary">
-      <a href="#top" class="is-current">Home</a>
+      <a href="#home" class="is-current">Home</a>
       <a href="#work">Work</a>
       <a href="#services">Services</a>
       <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
     </nav>
 
-    <div class="nav-actions">
-      <button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to dark theme">
-        <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <circle cx="12" cy="12" r="4.2"></circle>
-          <path d="M12 2.6v2.2M12 19.2v2.2M4.2 12H2M22 12h-2.2M6.3 6.3 4.8 4.8M19.2 19.2l-1.5-1.5M17.7 6.3l1.5-1.5M4.8 19.2l1.5-1.5"></path>
-        </svg>
-        <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.5 8.5 0 1 0 10.2 10.2Z"></path>
-        </svg>
-      </button>
-      <a class="btn btn-primary btn-sm" href="mailto:hello@tilux.dev">Email me</a>
-      <button class="icon-btn menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
-        <span class="bar"></span><span class="bar"></span>
-      </button>
-    </div>
-  </div>
-
-  <div class="mobile-nav" id="mobileNav" hidden>
-    <a href="#top">Home</a>
-    <a href="#work">Work</a>
-    <a href="#services">Services</a>
-    <a href="#experience">Experience</a>
-    <a href="#contact">Contact</a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+      <span class="bar"></span><span class="bar"></span>
+    </button>
   </div>
 </header>
 
+<div class="mobile-nav" id="mobileNav" hidden>
+  <a href="#home">Home</a>
+  <a href="#work">Work</a>
+  <a href="#services">Services</a>
+  <a href="#experience">Experience</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<nav class="pager" id="pager" aria-label="Page sections">
+  <a class="pager-dot is-active" href="#home" data-label="Home"><span class="sr-only">Home</span></a>
+  <a class="pager-dot" href="#work" data-label="Work"><span class="sr-only">Work</span></a>
+  <a class="pager-dot" href="#services" data-label="Services"><span class="sr-only">Services</span></a>
+  <a class="pager-dot" href="#experience" data-label="Experience"><span class="sr-only">Experience</span></a>
+  <a class="pager-dot" href="#contact" data-label="Contact"><span class="sr-only">Contact</span></a>
+</nav>
+
 <main id="main">
 
-<section class="hero" id="top">
-  <div class="container">
-    <div class="hero-card">
-      <span class="pill reveal"><span class="dot" aria-hidden="true"></span>Available for new projects</span>
-      <h1 class="display reveal" style="--d:1">Tilux</h1>
-      <p class="body-lg reveal" style="--d:2">UI/UX designer and developer building digital products that are clear, usable and conversion focused.</p>
-      <p class="body reveal" style="--d:3">I take rough ideas through research, interface design and production front-end - shipping web and mobile products with a focus on clarity, motion and detail.</p>
-      <div class="hero-actions reveal" style="--d:4">
-        <a class="btn btn-primary" href="#contact">Let's collaborate<span class="arrow" aria-hidden="true">&rarr;</span></a>
-        <a class="btn btn-secondary" href="#work">Our services</a>
+<section class="hero" id="home">
+  <div class="hero-canvas">
+    <div class="hero-grid">
+
+      <div class="hero-copy">
+        <p class="caption hero-eyebrow reveal">Designer &amp; Developer</p>
+        <h1 class="display reveal" style="--d:1">Tilux</h1>
+        <div class="hero-meta reveal" style="--d:2">
+          <h3 class="meta-label">What I do</h3>
+          <p class="meta-text">Interface design, front-end engineering and design systems, taken from a rough brief all the way through to a shipped and tested product.</p>
+        </div>
       </div>
+
+      <div class="hero-visual reveal" style="--d:2">
+        <figure class="portrait">
+          <img src="assets/portrait-mono.jpg" width="768" height="626" alt="Monochrome portrait of Tilux" fetchpriority="high">
+          <figcaption class="hud hud-a">
+            <span class="hud-dot" aria-hidden="true"></span>
+            Product Design
+          </figcaption>
+          <figcaption class="hud hud-b">
+            <span class="hud-dot" aria-hidden="true"></span>
+            Realtime &amp; Motion
+          </figcaption>
+        </figure>
+      </div>
+
     </div>
   </div>
 </section>
@@ -95,8 +93,8 @@
 <section class="section" id="work">
   <div class="container">
     <div class="section-head">
-      <div>
-        <p class="eyebrow reveal">Selected Work</p>
+      <div class="section-head-copy">
+        <p class="caption reveal">Selected work</p>
         <h2 class="h1 reveal" style="--d:1">Projects designed and built end to end.</h2>
       </div>
       <div class="filters reveal" style="--d:2" role="group" aria-label="Filter projects">
@@ -115,9 +113,9 @@
         <div class="card-body">
           <div class="card-top">
             <h3 class="h3">LoveCount</h3>
-            <span class="card-year">Mobile</span>
+            <span class="card-tag">Mobile</span>
           </div>
-          <p class="body">Realtime app for couples. Expo and React Native on a custom Firebase backend, with live sync, chat and WebRTC calling.</p>
+          <p class="card-text">Realtime app for couples. Expo and React Native on a custom Firebase backend, with live sync, chat and WebRTC calling.</p>
           <ul class="tag-row">
             <li>React Native</li><li>Firebase</li><li>WebRTC</li>
           </ul>
@@ -132,9 +130,9 @@
         <div class="card-body">
           <div class="card-top">
             <h3 class="h3">Tilux Automotive</h3>
-            <span class="card-year">Web</span>
+            <span class="card-tag">Web</span>
           </div>
-          <p class="body">Boutique performance car dealership. Full-bleed hero, curated inventory, live carousel and a booking flow built to convert.</p>
+          <p class="card-text">Boutique performance car dealership. Full-bleed hero, curated inventory, live carousel and a booking flow built to convert.</p>
           <ul class="tag-row">
             <li>Design</li><li>Front-end</li><li>Motion</li>
           </ul>
@@ -149,9 +147,9 @@
         <div class="card-body">
           <div class="card-top">
             <h3 class="h3">Fresh &amp; Reddy</h3>
-            <span class="card-year">Web</span>
+            <span class="card-tag">Web</span>
           </div>
-          <p class="body">Premium office coffee, tea and pantry brand. Seven pages, a hand-built product carousel, swipe gestures and lead capture.</p>
+          <p class="card-text">Premium office coffee, tea and pantry brand. Seven pages, a hand-built product carousel, swipe gestures and lead capture.</p>
           <ul class="tag-row">
             <li>Brand</li><li>Front-end</li><li>CSS 3D</li>
           </ul>
@@ -161,14 +159,14 @@
 
       <article class="card work-card reveal" style="--d:3" data-cat="web">
         <div class="card-cover">
-          <img src="assets/work-isafast.png" width="1200" height="750" alt="Isafast Venture homepage" loading="lazy">
+          <img src="assets/work-isafast.png" width="1120" height="2296" alt="Isafast Venture homepage" loading="lazy">
         </div>
         <div class="card-body">
           <div class="card-top">
             <h3 class="h3">Isafast Venture</h3>
-            <span class="card-year">Web</span>
+            <span class="card-tag">Web</span>
           </div>
-          <p class="body">Venture studio marketing presence. Editorial layout, structured service hierarchy and a clean responsive grid.</p>
+          <p class="card-text">Venture studio marketing presence. Editorial layout, structured service hierarchy and a clean responsive grid.</p>
           <ul class="tag-row">
             <li>Design</li><li>Layout</li><li>Responsive</li>
           </ul>
@@ -181,13 +179,13 @@
   </div>
 </section>
 
-<section class="section section-alt" id="services">
+<section class="section" id="services">
   <div class="container services-grid">
     <div class="services-intro">
-      <p class="eyebrow reveal">Services</p>
+      <p class="caption reveal">Services</p>
       <h2 class="h1 reveal" style="--d:1">What I do, and how it ships.</h2>
-      <p class="body reveal" style="--d:2">A small, focused set of things done properly. Each engagement ends in something you can actually use, not a deck.</p>
-      <a class="btn btn-secondary reveal" style="--d:3" href="#contact">Start a project</a>
+      <p class="body-lg reveal" style="--d:2">A small, focused set of things done properly. Each engagement ends in something you can actually use, not a deck.</p>
+      <button class="btn btn-secondary reveal" style="--d:3" type="button" data-scroll="#contact">Start a project<span class="arrow" aria-hidden="true">&rarr;</span></button>
     </div>
 
     <div class="accordion reveal" style="--d:2">
@@ -199,7 +197,7 @@
         </button>
         <div class="acc-panel" id="acc1" role="region">
           <div class="acc-inner">
-            <p class="body">Wireframes through to polished interface. Design systems, reusable components and user flows that stay consistent as the product grows.</p>
+            <p class="card-text">Wireframes through to polished interface. Design systems, reusable components and user flows that stay consistent as the product grows.</p>
           </div>
         </div>
       </div>
@@ -212,7 +210,7 @@
         </button>
         <div class="acc-panel" id="acc2" role="region">
           <div class="acc-inner">
-            <p class="body">Semantic, accessible HTML, modern CSS and well-structured JavaScript. Responsive, fast and maintainable by whoever touches it next.</p>
+            <p class="card-text">Semantic, accessible HTML, modern CSS and well-structured JavaScript. Responsive, fast and maintainable by whoever touches it next.</p>
           </div>
         </div>
       </div>
@@ -225,7 +223,7 @@
         </button>
         <div class="acc-panel" id="acc3" role="region">
           <div class="acc-inner">
-            <p class="body">Tokens, type scales, spacing rules and a documented component library, so a team can ship new screens without guessing at values.</p>
+            <p class="card-text">Tokens, type scales, spacing rules and a documented component library, so a team can ship new screens without guessing at values.</p>
           </div>
         </div>
       </div>
@@ -238,7 +236,7 @@
         </button>
         <div class="acc-panel" id="acc4" role="region">
           <div class="acc-inner">
-            <p class="body">Expo and React Native apps wired to a live backend - realtime data, presence, chat and calling, tested across two real devices.</p>
+            <p class="card-text">Expo and React Native apps wired to a live backend, covering realtime data, presence, chat and calling across two real devices.</p>
           </div>
         </div>
       </div>
@@ -251,7 +249,7 @@
         </button>
         <div class="acc-panel" id="acc5" role="region">
           <div class="acc-inner">
-            <p class="body">Scripted workflows, task automation and internal tools that strip out the repetitive work so the real work gets the time.</p>
+            <p class="card-text">Scripted workflows, task automation and internal tools that strip out the repetitive work so the real work gets the time.</p>
           </div>
         </div>
       </div>
@@ -262,8 +260,8 @@
 <section class="section" id="experience">
   <div class="container">
     <div class="section-head">
-      <div>
-        <p class="eyebrow reveal">Experience</p>
+      <div class="section-head-copy">
+        <p class="caption reveal">Experience</p>
         <h2 class="h1 reveal" style="--d:1">A short history of shipped work.</h2>
       </div>
     </div>
@@ -274,7 +272,7 @@
         <div class="tl-body">
           <h3 class="h3">Independent Designer &amp; Developer</h3>
           <p class="tl-org">Freelance / Remote</p>
-          <p class="body">Designing and building web and mobile products end to end, from brand system through to shipped interface, for clients and personal ventures.</p>
+          <p class="card-text">Designing and building web and mobile products end to end, from brand system through to shipped interface, for clients and personal ventures.</p>
         </div>
       </li>
       <li class="timeline-row reveal" style="--d:1">
@@ -282,7 +280,7 @@
         <div class="tl-body">
           <h3 class="h3">Front-end Developer</h3>
           <p class="tl-org">Contract work</p>
-          <p class="body">Delivered responsive, accessible marketing sites and dashboards, owning the layout system and component styling.</p>
+          <p class="card-text">Delivered responsive, accessible marketing sites and dashboards, owning the layout system and component styling.</p>
         </div>
       </li>
       <li class="timeline-row reveal" style="--d:2">
@@ -290,7 +288,7 @@
         <div class="tl-body">
           <h3 class="h3">UI / UX Designer</h3>
           <p class="tl-org">Studio &amp; client projects</p>
-          <p class="body">Turned written briefs into interface systems, interactive prototypes and clean handoff specs.</p>
+          <p class="card-text">Turned written briefs into interface systems, interactive prototypes and clean handoff specs.</p>
         </div>
       </li>
       <li class="timeline-row reveal" style="--d:3">
@@ -298,7 +296,7 @@
         <div class="tl-body">
           <h3 class="h3">Computer Science Student</h3>
           <p class="tl-org">University</p>
-          <p class="body">Studying software engineering alongside hands-on product work, shipping side projects the whole way through.</p>
+          <p class="card-text">Studying software engineering alongside hands-on product work, shipping side projects the whole way through.</p>
         </div>
       </li>
     </ol>
@@ -307,10 +305,10 @@
 
 <section class="section" id="contact">
   <div class="container">
-    <div class="cta-card reveal">
-      <span class="pill"><span class="dot" aria-hidden="true"></span>Replies within a day</span>
+    <div class="contact-card reveal">
+      <p class="caption">Get in touch</p>
       <h2 class="h1">Have a project in mind?</h2>
-      <p class="body-lg">Tell me what you're building and I'll tell you how I'd approach it. Scope, stack and the rough shape of the build. No pitch deck required.</p>
+      <p class="body-lg">Tell me what you are building and I will tell you how I would approach it. Scope, stack and the rough shape of the build. No pitch deck required.</p>
 
       <form class="contact-form" id="contactForm" novalidate>
         <div class="field">
@@ -358,14 +356,11 @@
 <footer class="footer">
   <div class="container footer-grid">
     <div class="footer-brand">
-      <a class="logo" href="#top" aria-label="Tilux, back to top">
-        <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-          <rect class="logo-bg" width="32" height="32" rx="9"></rect>
-          <path class="logo-fg" d="M9.5 12h13M16 12v11.5"></path>
-        </svg>
-        <span class="logo-text">Tilux</span>
+      <a class="brand" href="#home" aria-label="Tilux, back to top">
+        <span class="brand-badge" aria-hidden="true">T</span>
+        <span class="brand-name">Tilux</span>
       </a>
-      <p class="body">Designer and developer building clear and usable digital products for the web and mobile.</p>
+      <p class="card-text">Designer and developer building clear and usable digital products for the web and mobile.</p>
     </div>
 
     <nav class="footer-col" aria-label="Work">
@@ -381,7 +376,7 @@
       <a href="#services">Services</a>
       <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
-      <a href="#top">Back to top</a>
+      <a href="#home">Back to top</a>
     </nav>
 
     <nav class="footer-col" aria-label="Elsewhere">
@@ -399,6 +394,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=20261006c"></script>
+<script src="script.js?v=20261007a"></script>
 </body>
 </html>

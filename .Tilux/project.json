@@ -1,35 +1,54 @@
 {
-  "project": "Tilux Portfolio",
-  "type": "personal portfolio, single page",
-  "stack": "vanilla HTML + CSS + JS, no build step",
-  "design_system": "editorial minimalist, dual theme (light default)",
-  "brand_name": "Tilux",
-  "role": "Designer & Developer",
-  "location": "Lagos, Nigeria",
-  "font": "Plus Jakarta Sans",
-  "theme_default": "light",
-  "theme_toggle": true,
+  "name": "Tilux Portfolio",
+  "version": "3.0",
+  "stack": [
+    "HTML",
+    "CSS",
+    "vanilla JS"
+  ],
+  "theme": "light studio only",
+  "canvas": "#F4F4F4",
+  "fonts": [
+    "Plus Jakarta Sans"
+  ],
   "sections": [
-    "navbar",
-    "hero",
-    "selected-work",
+    "nav pill",
+    "hero canvas",
+    "work",
     "services",
     "experience",
-    "cta",
+    "contact",
     "footer"
   ],
-  "contact_email": "hello@tilux.dev",
-  "socials": [
-    "github",
-    "dribbble",
-    "twitter",
-    "instagram"
-  ],
-  "github_user": "Tilux01",
-  "server_port": 8082,
-  "no_comments": true,
-  "no_placeholder_content": true,
-  "reused_assets": [
-    "assets/portrait.jpg"
+  "tokens": {
+    "primary": "#111111",
+    "primary_hover": "#222222",
+    "primary_active": "#000000",
+    "accent": "#000000",
+    "success": "#10B981",
+    "warning": "#F59E0B",
+    "danger": "#EF4444",
+    "bg_app": "#F4F4F4",
+    "surface_1": "#FFFFFF",
+    "surface_2": "rgba(255,255,255,0.85)",
+    "surface_3": "#FFFFFF",
+    "border_base": "#E2E8F0",
+    "border_muted": "#CBD5E1",
+    "border_hover": "#94A3B8",
+    "border_active": "#0F172A",
+    "text_primary": "#0F172A",
+    "text_muted": "#64748B",
+    "text_muted_on_app": "#5D6879",
+    "text_disabled": "#CBD5E1",
+    "text_inverse": "#FFFFFF",
+    "text_accent": "#000000",
+    "backdrop_blur": "blur(16px)",
+    "shadow_glow": "0 8px 30px rgba(0,0,0,0.08)",
+    "shadow_card": "0 4px 20px rgba(0,0,0,0.04)"
+  },
+  "deviations": [
+    "Derived --color-text-muted-on-app because the brief's muted token measures 4.33:1 on the app canvas (fails AA); the token itself is kept exactly as specified.",
+    "Dark theme removed because the brief defines no dark tokens.",
+    "Hero carries no CTA buttons because the specified hero component contains none."
   ]
 }
